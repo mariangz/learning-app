@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/main.467514e0.css","mappings":"AAAA,WACE,oBAAqB,CAErB,YAAa,CACb,QAAS,CAFT,eAGF","sources":["index.css"],"sourcesContent":[".container {\n  border: 1px solid red;\n  max-width: 760px;\n  display: flex;\n  gap: 1rem;\n}"],"names":[],"sourceRoot":""}
