@@ -1,3 +1,3 @@
-export default function Title() {
-  return <div></div>;
+export default function Title({ title }) {
+  return <h1>{title}</h1>;
 }
