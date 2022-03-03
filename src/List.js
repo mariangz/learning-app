@@ -1,5 +1,6 @@
-import './index.css';
 import React from 'react';
+import './index.css';
+
 export default function List() {
   return (
     <>
