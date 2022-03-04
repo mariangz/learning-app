@@ -5,7 +5,7 @@ import Container from './Container';
 export default function App() {
   return (
     <>
-      <Container>
+      <Container theme="dark">
         <Card title="No Idea" />
         <Card title="Learning" />
         <Card title="Project" />
