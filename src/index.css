@@ -19,6 +19,11 @@ body {
   gap: 1rem;
 }
 
+.main-container {
+  border: 1px solid transparent;
+  flex-direction: column;
+}
+
 .card {
   background-color: #a8dadc;
   width: 450px;
@@ -36,5 +41,9 @@ body {
 }
 
 .container.dark {
-  background-color: darkcyan;
+  background-color: #1d3557;
+}
+
+.container.light {
+  background-color: #fff;
 }
