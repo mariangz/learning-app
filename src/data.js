@@ -1,7 +1,7 @@
 export const data = [
   {
     id: 1,
-    title: 'Svelte',
+    title: 'React',
     description: "It's a framework",
   },
   {
