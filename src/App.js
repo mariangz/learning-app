@@ -11,6 +11,10 @@ export default function App() {
         <Card title="Project" />
         <Card title="Ready" />
       </Container>
+      <Container theme="dark">
+        <input />
+        <button type="submit">Send</button>
+      </Container>
     </>
   );
 }
