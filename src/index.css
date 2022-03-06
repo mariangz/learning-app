@@ -1,49 +1,49 @@
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	font-family: 'Poppins', sans-serif;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .container {
-  border: 1px solid black;
-  max-width: 1200px;
-  display: flex;
-  gap: 1rem;
+	border: 1px solid black;
+	max-width: 1200px;
+	display: flex;
+	gap: 1rem;
 }
 
 .main-container {
-  border: 1px solid transparent;
-  flex-direction: column;
+	border: 1px solid transparent;
+	flex-direction: column;
 }
 
 .card {
-  background-color: #a8dadc;
-  width: 450px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem;
+	background-color: #a8dadc;
+	width: 450px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+	padding: 1rem;
 }
 
 .task {
-  width: 250px;
-  background-color: #f1faee;
-  padding: 1rem;
+	width: 250px;
+	background-color: #f1faee;
+	padding: 1rem;
 }
 
 .container.dark {
-  background-color: #1d3557;
+	background-color: #1d3557;
 }
 
 .container.light {
-  background-color: #fff;
+	background-color: #fff;
 }
