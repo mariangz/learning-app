@@ -19,19 +19,19 @@ body {
 	gap: 1rem;
 }
 
-.main-container {
-	border: 1px solid transparent;
-	flex-direction: column;
-}
-
 .card {
 	background-color: #a8dadc;
 	width: 450px;
 	display: flex;
 	flex-direction: column;
+	flex-basis: 90%;
 	align-items: center;
 	gap: 1rem;
 	padding: 1rem;
+}
+
+.card__body {
+	flex-grow: 1;
 }
 
 .task {
