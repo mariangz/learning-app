@@ -3,6 +3,7 @@
 	--coral: #eb6f5b;
 	--peach: #feceb4;
 	--blue: #1411ec;
+	--grey: #5e6c84;
 }
 
 * {
@@ -13,10 +14,7 @@
 
 body {
 	font-family: 'Poppins', sans-serif;
-	height: 100vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+
 	background-color: aqua;
 }
 
@@ -24,23 +22,22 @@ body {
 	border: 1px solid black;
 	display: flex;
 	gap: 1rem;
-	max-width: 1200px;
-	padding: 4rem;
+	padding: 1rem;
+	height: 100vh;
 }
 
 .card {
 	background-color: #a8dadc;
 	display: flex;
 	flex-direction: column;
-	flex-basis: 90%;
 	align-items: center;
 	gap: 1rem;
 	padding: 1rem;
-	width: 250px;
+	width: 270px;
 }
 
 .card__body {
-	flex-grow: 1;
+	/* flex-grow: 1; */
 }
 
 .task {
@@ -55,4 +52,16 @@ body {
 
 .container.light {
 	background-color: #fff;
+}
+
+.AddCardButton__container {
+	min-width: 100%;
+	background-color: #eb6f5b;
+}
+
+.AddCardButton__btn {
+	background-color: var(--blue);
+	border: 0;
+	outline: 0;
+	padding: 0.5rem;
 }
