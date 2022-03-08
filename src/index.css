@@ -1,3 +1,10 @@
+:root {
+	--rose: #fef5f1;
+	--coral: #eb6f5b;
+	--peach: #feceb4;
+	--blue: #1411ec;
+}
+
 * {
 	box-sizing: border-box;
 	margin: 0;
@@ -10,24 +17,26 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	background-color: aqua;
 }
 
 .container {
 	border: 1px solid black;
-	max-width: 1200px;
 	display: flex;
 	gap: 1rem;
+	max-width: 1200px;
+	padding: 4rem;
 }
 
 .card {
 	background-color: #a8dadc;
-	width: 450px;
 	display: flex;
 	flex-direction: column;
 	flex-basis: 90%;
 	align-items: center;
 	gap: 1rem;
 	padding: 1rem;
+	width: 250px;
 }
 
 .card__body {
@@ -35,7 +44,7 @@ body {
 }
 
 .task {
-	width: 250px;
+	width: 100%;
 	background-color: #f1faee;
 	padding: 1rem;
 }
