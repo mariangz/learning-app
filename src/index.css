@@ -14,12 +14,9 @@
 
 body {
 	font-family: 'Poppins', sans-serif;
-
-	background-color: aqua;
 }
 
 .container {
-	border: 1px solid black;
 	display: flex;
 	align-items: flex-start;
 	gap: 1rem;
@@ -28,7 +25,7 @@ body {
 }
 
 .column {
-	background-color: #a8dadc;
+	background-color: var(--peach);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -43,7 +40,7 @@ body {
 
 .task {
 	width: 100%;
-	background-color: #f1faee;
+	background-color: var(--rose);
 	padding: 1rem;
 }
 
@@ -52,7 +49,7 @@ body {
 }
 
 .container.light {
-	background-color: #fff;
+	background-color: var(--rose);
 }
 
 .AddCardButton__container {
@@ -64,11 +61,23 @@ body {
 	outline: 0;
 	padding: 0.5rem;
 	cursor: pointer;
-	color: var(--grey);
-	background-color: transparent;
+	color: #000;
+	background-color: var(--peach);
+	border-radius: 5px;
+	width: 100%;
 }
 
 .AddCardButton__btn:focus,
 .AddCardButton__btn:hover {
-	background-color: #5e6c84;
+	background-color: rgba(94, 108, 132, 0.3);
+}
+
+.task__title {
+	font-size: 14px;
+	font-weight: 400;
+}
+
+.column__title {
+	font-size: 1rem;
+	font-weight: 600;
 }

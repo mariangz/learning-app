@@ -11,7 +11,7 @@ export default function App() {
 
 	return (
 		<>
-			<Container theme='dark'>
+			<Container theme='light'>
 				<Column title='No Idea' dataList={dataList} />
 				<Column title='Learning' />
 				<Column title='Project' />
