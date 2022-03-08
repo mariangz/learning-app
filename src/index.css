@@ -21,12 +21,13 @@ body {
 .container {
 	border: 1px solid black;
 	display: flex;
+	align-items: flex-start;
 	gap: 1rem;
 	padding: 1rem;
 	height: 100vh;
 }
 
-.card {
+.column {
 	background-color: #a8dadc;
 	display: flex;
 	flex-direction: column;
@@ -36,7 +37,7 @@ body {
 	width: 270px;
 }
 
-.card__body {
+.column__body {
 	/* flex-grow: 1; */
 }
 
@@ -56,12 +57,18 @@ body {
 
 .AddCardButton__container {
 	min-width: 100%;
-	background-color: #eb6f5b;
 }
 
 .AddCardButton__btn {
-	background-color: var(--blue);
 	border: 0;
 	outline: 0;
 	padding: 0.5rem;
+	cursor: pointer;
+	color: var(--grey);
+	background-color: transparent;
+}
+
+.AddCardButton__btn:focus,
+.AddCardButton__btn:hover {
+	background-color: #5e6c84;
 }

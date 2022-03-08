@@ -1,4 +1,4 @@
-import Card from './Card';
+import Column from './Column';
 import './index.css';
 import Container from './Container';
 import Task from './Task';
@@ -12,10 +12,10 @@ export default function App() {
 	return (
 		<>
 			<Container theme='dark'>
-				<Card title='No Idea' dataList={dataList} />
-				<Card title='Learning' />
-				<Card title='Project' />
-				<Card title='Ready' />
+				<Column title='No Idea' dataList={dataList} />
+				<Column title='Learning' />
+				<Column title='Project' />
+				<Column title='Ready' />
 			</Container>
 		</>
 	);
