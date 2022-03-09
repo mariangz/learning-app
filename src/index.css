@@ -4,6 +4,7 @@
 	--peach: #feceb4;
 	--blue: #1411ec;
 	--grey: #5e6c84;
+	--white: #fff;
 }
 
 * {
@@ -49,7 +50,7 @@ body {
 }
 
 .container.light {
-	background-color: var(--rose);
+	background-color: var(--white);
 }
 
 .AddCardButton__container {
@@ -80,4 +81,10 @@ body {
 .column__title {
 	font-size: 1rem;
 	font-weight: 600;
+}
+
+.AddCardButton__input {
+	width: 100%;
+	border: 0;
+	padding: 0.3rem;
 }
