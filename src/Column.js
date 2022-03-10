@@ -1,22 +1,30 @@
 import { useState } from 'react';
-import AddCardButton from './AddCardButton';
+import Task from './Task';
+export default function Column({ title }) {
+	const [task, setTask] = useState([]);
+	const [name, setName] = useState('');
+	function handleSubmitAdd(e) {
+		e.preventDefault();
+		setTask([...task, name]);
+		setName('');
+	}
+	const taskList = task.map((item) => <Task title={item} />);
 
-export default function Column({ title, dataList }) {
-	const [task, setTask] = useState(dataList);
-	const handleInputClick = () => {
-		const value = document.getElementsByClassName('AddCardButton__input').value;
-		console.log(value);
-	};
 	return (
 		<div className='column'>
 			<h1 className='column column__title'>{title}</h1>
-			<div className='column column__body'>{task}</div>
-			<div className='AddCardButton__container'>
-				<input onC className='AddCardButton__input' />
-				<button className='AddCardButton__btn' onClick={handleInputClick}>
-					+ Add a Card
+			<div className='column column__body'>{taskList}</div>
+			<form onSubmit={handleSubmitAdd} className='AddCardButton__container'>
+				<input
+					onChange={(e) => setName(e.target.value)}
+					placeholder='Task'
+					value={name}
+					className='AddCardButton__input'
+				/>
+				<button type='submit' className='AddCardButton__btn'>
+					+ Add a Task
 				</button>
-			</div>
+			</form>
 		</div>
 	);
 }
