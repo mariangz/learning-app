@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Task from './Task';
-import AddButton from './AddButton';
 
 export default function Column({ title }) {
 	const [task, setTask] = useState([]);
@@ -20,7 +19,7 @@ export default function Column({ title }) {
 		setAddInput(true);
 	}
 
-	const taskList = task.map((item) => <Task title={item} />);
+	const taskList = task.map((item) => <Task key={item} title={item} />);
 	let btn;
 	if (addInput) {
 		btn = (
