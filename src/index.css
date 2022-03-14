@@ -35,14 +35,18 @@ body {
 	width: 270px;
 }
 
-.column__body {
-	/* flex-grow: 1; */
+ul {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
 }
 
-.task {
-	width: 100%;
+li {
+	min-width: 100%;
 	background-color: var(--rose);
 	padding: 1rem;
+	margin-top: 1rem;
 }
 
 .container.dark {
@@ -81,6 +85,11 @@ body {
 .column__title {
 	font-size: 1rem;
 	font-weight: 600;
+}
+
+.column__body {
+	width: 100%;
+	text-align: center;
 }
 
 .AddCardButton__input {
