@@ -1,4 +1,3 @@
-import { useState } from 'react';
 export default function Column({ title, tasksList, children }) {
 	return (
 		<div className='column'>
