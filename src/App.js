@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Immer } from 'immer';
 import './index.css';
 import AppForm from './AppForm';
 import Column from './Column';
@@ -14,6 +13,7 @@ export default function App() {
 	const [entry, setEntry] = useState('');
 	const [showButton, setShowButton] = useImmer({});
 	const [showInput, setShowInput] = useImmer({});
+	const [validation, setValidation] = useState('');
 	// console.log(tasks);
 	// console.log(entry);
 	// console.log(showButton);
@@ -22,6 +22,10 @@ export default function App() {
 	function handleFormSubmit(event) {
 		const e = event.target;
 		event.preventDefault();
+		if (!entry) {
+			setValidation('Please, enter a task');
+			return;
+		}
 		setTasks(
 			produce(tasks, (draft) => {
 				draft[e.id].push(entry);
@@ -55,8 +59,6 @@ export default function App() {
 		setEntry(e.value);
 	}
 
-	// const tasksList = tasks.map((task) => <li key={task}>{task}</li>);
-
 	return (
 		<div className='container'>
 			<Column
@@ -72,6 +74,7 @@ export default function App() {
 					onShowInputClick={handleShowInputClick}
 					onEntryChange={handleEntryChange}
 					id='no-idea'
+					validation={validation}
 				/>
 			</Column>
 			<Column
@@ -87,6 +90,7 @@ export default function App() {
 					onShowInputClick={handleShowInputClick}
 					onEntryChange={handleEntryChange}
 					id='learning'
+					validation={validation}
 				/>
 			</Column>
 		</div>

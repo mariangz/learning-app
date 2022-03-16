@@ -6,6 +6,7 @@ export default function AppForm(props) {
 		onShowInputClick,
 		onEntryChange,
 		id,
+		validation,
 	} = props;
 	// console.log(props);
 	let btn;
@@ -24,6 +25,7 @@ export default function AppForm(props) {
 						className='AddCardButton__input'
 						id={id}
 					/>
+					<p className='validation-msg'>{validation}</p>
 					<button type='submit' className='AddCardButton__btn' id={id}>
 						Enter
 					</button>
