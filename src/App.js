@@ -9,19 +9,14 @@ export default function App() {
 	const [tasks, setTasks] = useState({
 		'no-idea': [],
 		learning: [],
+		ready: [],
 	});
 	const [entry, setEntry] = useState('');
 	const [showButton, setShowButton] = useImmer({});
 	const [showInput, setShowInput] = useImmer({});
 	const [validation, setValidation] = useState({});
-	// console.log(tasks);
-	// console.log(entry);
-	console.log(showButton);
-	console.log(showInput);
-
 	function handleFormSubmit(event) {
 		const e = event.target;
-		console.dir(e);
 		event.preventDefault();
 		if (!entry) {
 			setValidation(
@@ -33,7 +28,12 @@ export default function App() {
 		}
 		setTasks(
 			produce(tasks, (draft) => {
-				draft[e.id].push(entry);
+				if (draft[e.id]) {
+					draft[e.id].push(entry);
+				} else {
+					draft[e.id] = [];
+					draft[e.id].push(entry);
+				}
 			})
 		);
 		setEntry('');
@@ -68,9 +68,27 @@ export default function App() {
 		<div className='container'>
 			<Column
 				title='No Idea'
-				tasksList={tasks['no-idea'].map((item) => (
-					<li key={item}>{item}</li>
-				))}
+				tasksList={tasks['no-idea'].map((item) => {
+					return (
+						<div key={item}>
+							<li>{item}</li>
+							<button
+								onClick={(e) => {
+									setTasks(
+										produce(tasks, (draft) => {
+											draft['learning'].push(item);
+											draft['no-idea'] = draft['no-idea'].filter(
+												(i) => i !== item
+											);
+										})
+									);
+								}}
+							>
+								Pass
+							</button>
+						</div>
+					);
+				})}
 			>
 				<AppForm
 					showInput={showInput}
@@ -84,9 +102,27 @@ export default function App() {
 			</Column>
 			<Column
 				title='Learning'
-				tasksList={tasks['learning'].map((item) => (
-					<li key={item}>{item}</li>
-				))}
+				tasksList={tasks['learning'].map((item) => {
+					return (
+						<div key={item}>
+							<li>{item}</li>
+							<button
+								onClick={(e) => {
+									setTasks(
+										produce(tasks, (draft) => {
+											draft['ready'].push(item);
+											draft['learning'] = draft['learning'].filter(
+												(i) => i !== item
+											);
+										})
+									);
+								}}
+							>
+								Pass
+							</button>
+						</div>
+					);
+				})}
 			>
 				<AppForm
 					showInput={showInput}
@@ -96,6 +132,37 @@ export default function App() {
 					onEntryChange={handleEntryChange}
 					id='learning'
 					validation={validation['learning']}
+				/>
+			</Column>
+			<Column
+				title='Ready'
+				tasksList={tasks['ready'].map((item) => {
+					return (
+						<div key={item}>
+							<li>{item}</li>
+							<button
+								onClick={(e) => {
+									setTasks(
+										produce(tasks, (draft) => {
+											draft['ready'] = draft['ready'].filter((i) => i !== item);
+										})
+									);
+								}}
+							>
+								Pass
+							</button>
+						</div>
+					);
+				})}
+			>
+				<AppForm
+					showInput={showInput}
+					entry={entry}
+					onFormSubmit={handleFormSubmit}
+					onShowInputClick={handleShowInputClick}
+					onEntryChange={handleEntryChange}
+					id='ready'
+					validation={validation['ready']}
 				/>
 			</Column>
 		</div>
