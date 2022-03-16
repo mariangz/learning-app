@@ -13,7 +13,7 @@ export default function App() {
 	const [entry, setEntry] = useState('');
 	const [showButton, setShowButton] = useImmer({});
 	const [showInput, setShowInput] = useImmer({});
-	const [validation, setValidation] = useState('');
+	const [validation, setValidation] = useState({});
 	// console.log(tasks);
 	// console.log(entry);
 	console.log(showButton);
@@ -21,11 +21,16 @@ export default function App() {
 
 	function handleFormSubmit(event) {
 		const e = event.target;
+		console.dir(e);
 		event.preventDefault();
-		// if (!entry) {
-		// 	setValidation('Please, enter a task');
-		// 	return;
-		// }
+		if (!entry) {
+			setValidation(
+				produce(validation, (draft) => {
+					draft[e.id] = 'Enter a task';
+				})
+			);
+			return;
+		}
 		setTasks(
 			produce(tasks, (draft) => {
 				draft[e.id].push(entry);
@@ -74,7 +79,7 @@ export default function App() {
 					onShowInputClick={handleShowInputClick}
 					onEntryChange={handleEntryChange}
 					id='no-idea'
-					validation={validation}
+					validation={validation['no-idea']}
 				/>
 			</Column>
 			<Column
@@ -90,7 +95,7 @@ export default function App() {
 					onShowInputClick={handleShowInputClick}
 					onEntryChange={handleEntryChange}
 					id='learning'
-					validation={validation}
+					validation={validation['learning']}
 				/>
 			</Column>
 		</div>

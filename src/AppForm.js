@@ -25,7 +25,9 @@ export default function AppForm(props) {
 						className='AddCardButton__input'
 						id={id}
 					/>
-					<p className='validation-msg'>{validation}</p>
+					<p id={id} className='validation-msg'>
+						{validation}
+					</p>
 					<button type='submit' className='AddCardButton__btn' id={id}>
 						Enter
 					</button>
