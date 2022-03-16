@@ -4,22 +4,30 @@ import './index.css';
 import AppForm from './AppForm';
 import Column from './Column';
 import { useImmer } from 'use-immer';
+import produce from 'immer';
 
 export default function App() {
-	const [tasks, setTasks] = useState({});
-	const [entry, setEntry] = useState({});
+	const [tasks, setTasks] = useState({
+		'no-idea': [],
+		learning: [],
+	});
+	const [entry, setEntry] = useState('');
 	const [showButton, setShowButton] = useImmer({});
 	const [showInput, setShowInput] = useImmer({});
-	// console.log('tasks ' + tasks);
-	console.log(entry);
+	// console.log(tasks);
+	// console.log(entry);
 	// console.log(showButton);
-	// console.log(showInput);
+	console.log(showInput);
 
 	function handleFormSubmit(event) {
 		const e = event.target;
 		event.preventDefault();
-		// setTasks([...tasks, entry]);
-		// setEntry('');
+		setTasks(
+			produce(tasks, (draft) => {
+				draft[e.id].push(entry);
+			})
+		);
+		setEntry('');
 		setShowButton((draft) => {
 			draft[e.id] = true;
 		});
@@ -30,24 +38,28 @@ export default function App() {
 
 	function handleShowInputClick(event) {
 		const e = event.target;
-		setShowButton((draft) => {
-			draft[e.id] = false;
-		});
-		setShowInput((draft) => {
-			draft[e.id] = true;
-		});
+		setShowButton(
+			produce(showButton, (draft) => {
+				draft[e.id] = false;
+			})
+		);
+		setShowInput(
+			produce(showButton, (draft) => {
+				draft[e.id] = true;
+			})
+		);
 	}
 
 	function handleEntryChange(event) {
 		const e = event.target;
-		setEntry(e.target.value);
+		setEntry(e.value);
 	}
 
-	const tasksList = tasks.map((task) => <li key={task}>{task}</li>);
+	// const tasksList = tasks.map((task) => <li key={task}>{task}</li>);
 
 	return (
 		<div className='container'>
-			<Column title='No Idea' tasksList={tasksList}>
+			<Column title='No Idea' tasksList={<li>Hola</li>}>
 				<AppForm
 					showInput={showInput}
 					entry={entry}
@@ -57,7 +69,7 @@ export default function App() {
 					id='no-idea'
 				/>
 			</Column>
-			<Column title='Learning' tasksList={tasksList}>
+			<Column title='Learning' tasksList={<li>Hola</li>}>
 				<AppForm
 					showInput={showInput}
 					entry={entry}
