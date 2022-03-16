@@ -16,16 +16,16 @@ export default function App() {
 	const [validation, setValidation] = useState('');
 	// console.log(tasks);
 	// console.log(entry);
-	// console.log(showButton);
+	console.log(showButton);
 	console.log(showInput);
 
 	function handleFormSubmit(event) {
 		const e = event.target;
 		event.preventDefault();
-		if (!entry) {
-			setValidation('Please, enter a task');
-			return;
-		}
+		// if (!entry) {
+		// 	setValidation('Please, enter a task');
+		// 	return;
+		// }
 		setTasks(
 			produce(tasks, (draft) => {
 				draft[e.id].push(entry);
@@ -48,7 +48,7 @@ export default function App() {
 			})
 		);
 		setShowInput(
-			produce(showButton, (draft) => {
+			produce(showInput, (draft) => {
 				draft[e.id] = true;
 			})
 		);
@@ -64,7 +64,7 @@ export default function App() {
 			<Column
 				title='No Idea'
 				tasksList={tasks['no-idea'].map((item) => (
-					<li>{item}</li>
+					<li key={item}>{item}</li>
 				))}
 			>
 				<AppForm
@@ -80,7 +80,7 @@ export default function App() {
 			<Column
 				title='Learning'
 				tasksList={tasks['learning'].map((item) => (
-					<li>{item}</li>
+					<li key={item}>{item}</li>
 				))}
 			>
 				<AppForm
