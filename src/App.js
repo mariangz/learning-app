@@ -59,7 +59,12 @@ export default function App() {
 
 	return (
 		<div className='container'>
-			<Column title='No Idea' tasksList={<li>Hola</li>}>
+			<Column
+				title='No Idea'
+				tasksList={tasks['no-idea'].map((item) => (
+					<li>{item}</li>
+				))}
+			>
 				<AppForm
 					showInput={showInput}
 					entry={entry}
@@ -69,7 +74,12 @@ export default function App() {
 					id='no-idea'
 				/>
 			</Column>
-			<Column title='Learning' tasksList={<li>Hola</li>}>
+			<Column
+				title='Learning'
+				tasksList={tasks['learning'].map((item) => (
+					<li>{item}</li>
+				))}
+			>
 				<AppForm
 					showInput={showInput}
 					entry={entry}
