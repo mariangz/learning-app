@@ -8,7 +8,6 @@ export default function AppForm(props) {
 		id,
 		validation,
 	} = props;
-	// console.log(props);
 	let btn;
 	if (showInput[id]) {
 		btn = (
