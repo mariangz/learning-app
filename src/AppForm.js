@@ -1,3 +1,4 @@
+import plus from './images/plus.svg';
 export default function AppForm(props) {
   const {
     entry,
@@ -36,7 +37,8 @@ export default function AppForm(props) {
   } else {
     btn = (
       <button onClick={onShowInputClick} className='AddCardButton__btn' id={id}>
-        Add Task
+        <img src={plus} className='AddCardButton__icon' alt='' />
+        <p className='AddCardButton__text'>Add Task</p>
       </button>
     );
   }

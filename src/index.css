@@ -71,8 +71,12 @@ li {
   cursor: pointer;
   color: #000;
   background-color: var(--peach);
-  border-radius: 5px;
+  border-radius: 4px;
   width: 100%;
+  text-align: left;
+  display: flex;
+  gap: 0.7rem;
+  padding: 1rem;
 }
 
 .AddCardButton__btn:focus,
@@ -102,4 +106,12 @@ li {
 
 .validation-msg {
   color: red;
+}
+
+.AddCardButton__icon {
+  width: 14px;
+}
+
+.AddCardButton__text {
+  font-weight: 600;
 }
