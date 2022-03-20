@@ -20,7 +20,7 @@ export default function AppForm(props) {
         >
           <input
             onChange={onEntryChange}
-            placeholder='Task'
+            placeholder='Enter the title of the task...'
             value={entry}
             className='AddCardButton__input'
             id={id}

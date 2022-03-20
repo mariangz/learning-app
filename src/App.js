@@ -71,8 +71,11 @@ export default function App() {
         tasksList={tasks['no-idea'].map((item) => {
           return (
             <div key={item}>
-              <li>{item}</li>
-              <button
+              <li>
+                <span className='line'></span>
+                {item}
+              </li>
+              {/* <button
                 onClick={(e) => {
                   setTasks(
                     produce(tasks, (draft) => {
@@ -85,7 +88,7 @@ export default function App() {
                 }}
               >
                 Pass
-              </button>
+              </button> */}
             </div>
           );
         })}
@@ -106,7 +109,7 @@ export default function App() {
           return (
             <div key={item}>
               <li>{item}</li>
-              <button
+              {/* <button
                 onClick={(e) => {
                   setTasks(
                     produce(tasks, (draft) => {
@@ -119,7 +122,7 @@ export default function App() {
                 }}
               >
                 Pass
-              </button>
+              </button> */}
             </div>
           );
         })}
@@ -140,7 +143,7 @@ export default function App() {
           return (
             <div key={item}>
               <li>{item}</li>
-              <button
+              {/* <button
                 onClick={(e) => {
                   setTasks(
                     produce(tasks, (draft) => {
@@ -150,7 +153,7 @@ export default function App() {
                 }}
               >
                 Pass
-              </button>
+              </button> */}
             </div>
           );
         })}
