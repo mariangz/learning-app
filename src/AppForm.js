@@ -28,15 +28,24 @@ export default function AppForm(props) {
           <p id={id} className='validation-msg'>
             {validation}
           </p>
-          <button type='submit' className='AddCardButton__btn' id={id}>
-            Save
-          </button>
+          <div className='AddCardButton__btn-container'>
+            <button className='AddCardButton__btn cancel' id={id}>
+              Cancel
+            </button>
+            <button type='submit' className='AddCardButton__btn save' id={id}>
+              Save
+            </button>
+          </div>
         </form>
       </>
     );
   } else {
     btn = (
-      <button onClick={onShowInputClick} className='AddCardButton__btn' id={id}>
+      <button
+        onClick={onShowInputClick}
+        className='AddCardButton__btn add'
+        id={id}
+      >
         <img src={plus} className='AddCardButton__icon' alt='' />
         <p className='AddCardButton__text'>Add Task</p>
       </button>

@@ -79,22 +79,17 @@ li {
 .AddCardButton__btn {
   border: 0;
   outline: 0;
-  padding: 0.5rem;
   cursor: pointer;
-  color: #000;
-  background-color: var(--peach);
+  font-weight: bold;
+  outline: 0;
+  border: 0;
   border-radius: 4px;
-  width: 100%;
-  text-align: left;
-  display: flex;
-  gap: 0.7rem;
-  padding: 1rem;
 }
 
-.AddCardButton__btn:focus,
+/* .AddCardButton__btn:focus,
 .AddCardButton__btn:hover {
   background-color: rgba(94, 108, 132, 0.3);
-}
+} */
 
 .task__title {
   font-size: 14px;
@@ -135,6 +130,7 @@ li {
 
 .AddCardButton__icon {
   width: 14px;
+  display: block;
 }
 
 .AddCardButton__text {
@@ -148,4 +144,32 @@ li {
   height: 8px;
   border-radius: 1rem;
   background-color: var(--peach);
+}
+
+.AddCardButton__btn-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.AddCardButton__btn.add {
+  background-color: var(--peach);
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.AddCardButton__btn.cancel {
+  background-color: var(--rose);
+  font-weight: bold;
+}
+
+.AddCardButton__btn.save {
+  background-color: var(--blue);
+  color: var(--white);
+
+  padding: 0.5rem 1.2rem;
+  border-radius: 4px;
+  color: var(--white);
 }
