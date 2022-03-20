@@ -63,6 +63,16 @@ export default function App() {
     const e = event.target;
     setEntry(e.value);
   }
+  function handleCancelClick(event) {
+    const e = event.target;
+    setEntry('');
+    setShowButton((draft) => {
+      draft[e.id] = true;
+    });
+    setShowInput((draft) => {
+      draft[e.id] = false;
+    });
+  }
 
   return (
     <div className='container'>
@@ -99,6 +109,7 @@ export default function App() {
           onFormSubmit={handleFormSubmit}
           onShowInputClick={handleShowInputClick}
           onEntryChange={handleEntryChange}
+          onCancelClick={handleCancelClick}
           id='no-idea'
           validation={validation['no-idea']}
         />
@@ -133,6 +144,7 @@ export default function App() {
           onFormSubmit={handleFormSubmit}
           onShowInputClick={handleShowInputClick}
           onEntryChange={handleEntryChange}
+          onCancelClick={handleCancelClick}
           id='learning'
           validation={validation['learning']}
         />
@@ -164,6 +176,7 @@ export default function App() {
           onFormSubmit={handleFormSubmit}
           onShowInputClick={handleShowInputClick}
           onEntryChange={handleEntryChange}
+          onCancelClick={handleCancelClick}
           id='ready'
           validation={validation['ready']}
         />

@@ -6,6 +6,7 @@ export default function AppForm(props) {
     onFormSubmit,
     onShowInputClick,
     onEntryChange,
+    onCancelClick,
     id,
     validation,
   } = props;
@@ -29,7 +30,11 @@ export default function AppForm(props) {
             {validation}
           </p>
           <div className='AddCardButton__btn-container'>
-            <button className='AddCardButton__btn cancel' id={id}>
+            <button
+              onClick={onCancelClick}
+              className='AddCardButton__btn cancel'
+              id={id}
+            >
               Cancel
             </button>
             <button type='submit' className='AddCardButton__btn save' id={id}>
