@@ -1,103 +1,103 @@
 :root {
-	--rose: #fef5f1;
-	--coral: #eb6f5b;
-	--peach: #feceb4;
-	--blue: #1411ec;
-	--grey: #5e6c84;
-	--white: #fff;
+  --rose: #fdf5f2;
+  --coral: #eb6f5b;
+  --peach: #feceb4;
+  --blue: #1411ec;
+  --grey: #5e6c84;
+  --white: #fff;
 }
 
 * {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-	font-family: 'Poppins', sans-serif;
+  font-family: 'Rubik', sans-serif;
 }
 
 .container {
-	display: flex;
-	align-items: flex-start;
-	gap: 1rem;
-	padding: 1rem;
-	height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  height: 100vh;
 }
 
 .column {
-	background-color: var(--peach);
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 1rem;
-	padding: 1rem;
-	width: 270px;
+  background-color: var(--rose);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  width: 270px;
 }
 
 ul {
-	width: 100%;
-	margin: 0;
-	padding: 0;
-	list-style-type: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
 }
 
 li {
-	min-width: 100%;
-	background-color: var(--rose);
-	padding: 1rem;
-	margin-top: 1rem;
+  min-width: 100%;
+  background-color: var(--rose);
+  padding: 1rem;
+  margin-top: 1rem;
 }
 
 .container.dark {
-	background-color: #1d3557;
+  background-color: #1d3557;
 }
 
 .container.light {
-	background-color: var(--white);
+  background-color: var(--white);
 }
 
 .AddCardButton__container {
-	min-width: 100%;
+  min-width: 100%;
 }
 
 .AddCardButton__btn {
-	border: 0;
-	outline: 0;
-	padding: 0.5rem;
-	cursor: pointer;
-	color: #000;
-	background-color: var(--peach);
-	border-radius: 5px;
-	width: 100%;
+  border: 0;
+  outline: 0;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: #000;
+  background-color: var(--peach);
+  border-radius: 5px;
+  width: 100%;
 }
 
 .AddCardButton__btn:focus,
 .AddCardButton__btn:hover {
-	background-color: rgba(94, 108, 132, 0.3);
+  background-color: rgba(94, 108, 132, 0.3);
 }
 
 .task__title {
-	font-size: 14px;
-	font-weight: 400;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .column__title {
-	font-size: 1rem;
-	font-weight: 600;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .column__body {
-	width: 100%;
-	text-align: center;
+  width: 100%;
+  text-align: center;
 }
 
 .AddCardButton__input {
-	width: 100%;
-	border: 0;
-	padding: 0.3rem;
+  width: 100%;
+  border: 0;
+  padding: 0.3rem;
 }
 
 .validation-msg {
-	color: red;
+  color: red;
 }
