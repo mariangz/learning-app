@@ -163,15 +163,30 @@ li {
 .AddCardButton__btn.cancel {
   background-color: var(--rose);
   font-weight: bold;
+  padding: 0.5rem 1.2rem;
+  border: 2px solid var(--rose);
+  transition: all 0.5s ease-out;
+}
+
+.AddCardButton__btn.cancel:hover {
+  border: 2px solid var(--blue);
+  transition: all 0.5s ease-out;
 }
 
 .AddCardButton__btn.save {
   background-color: var(--blue);
   color: var(--white);
-
   padding: 0.5rem 1.2rem;
   border-radius: 4px;
   color: var(--white);
+  border: 2px solid var(--blue);
+  transition: all 0.5s ease-out;
+}
+
+.AddCardButton__btn.save:hover {
+  background-color: var(--rose);
+  border: 2px solid var(--blue);
+  color: var(--black);
 }
 
 .next-icon {

@@ -13,10 +13,12 @@ export default function App() {
     learning: [],
     ready: [],
   });
+
   const [entry, setEntry] = useState('');
   const [showButton, setShowButton] = useImmer({});
   const [showInput, setShowInput] = useImmer({});
   const [validation, setValidation] = useState({});
+  console.log(entry);
   function handleFormSubmit(event) {
     const e = event.target;
     event.preventDefault();
@@ -63,6 +65,8 @@ export default function App() {
 
   function handleEntryChange(event) {
     const e = event.target;
+    console.log(e);
+
     setEntry(e.value);
   }
 
@@ -90,12 +94,9 @@ export default function App() {
     <Container>
       <Column
         title='NO IDEA'
-        tasksList={tasks['no-idea'].map((item) => {
-          return <List key={item} item={item} />;
-          // {
-          /*  */
-          // }
-        })}
+        tasksList={tasks['no-idea'].map((item) => (
+          <List key={item} item={item} />
+        ))}
       >
         <AppForm
           showInput={showInput}
@@ -110,27 +111,9 @@ export default function App() {
       </Column>
       <Column
         title='LEARNING'
-        tasksList={tasks['learning'].map((item) => {
-          return (
-            <div key={item}>
-              <li>{item}</li>
-              {/* <button
-                onClick={(e) => {
-                  setTasks(
-                    produce(tasks, (draft) => {
-                      draft['ready'].push(item);
-                      draft['learning'] = draft['learning'].filter(
-                        (i) => i !== item
-                      );
-                    })
-                  );
-                }}
-              >
-                Pass
-              </button> */}
-            </div>
-          );
-        })}
+        tasksList={tasks['learning'].map((item) => (
+          <List key={item} item={item} />
+        ))}
       >
         <AppForm
           showInput={showInput}
@@ -145,24 +128,9 @@ export default function App() {
       </Column>
       <Column
         title='READY'
-        tasksList={tasks['ready'].map((item) => {
-          return (
-            <div key={item}>
-              <li>{item}</li>
-              {/* <button
-                onClick={(e) => {
-                  setTasks(
-                    produce(tasks, (draft) => {
-                      draft['ready'] = draft['ready'].filter((i) => i !== item);
-                    })
-                  );
-                }}
-              >
-                Pass
-              </button> */}
-            </div>
-          );
-        })}
+        tasksList={tasks['ready'].map((item) => (
+          <List key={item} item={item} />
+        ))}
       >
         <AppForm
           showInput={showInput}
