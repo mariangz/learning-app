@@ -3,6 +3,7 @@ import './index.css';
 import AppForm from './AppForm';
 import Column from './Column';
 import List from './List';
+import Container from './Container';
 import { useImmer } from 'use-immer';
 import produce from 'immer';
 
@@ -64,6 +65,7 @@ export default function App() {
     const e = event.target;
     setEntry(e.value);
   }
+
   function handleCancelClick(event) {
     const e = event.target;
     setEntry('');
@@ -75,27 +77,23 @@ export default function App() {
     });
   }
 
+  // function handleNextClick() {
+  //   setTasks(
+  //     produce(tasks, (draft) => {
+  //       draft['learning'].push(item);
+  //       draft['no-idea'] = draft['no-idea'].filter((i) => i !== item);
+  //     })
+  //   );
+  // }
+
   return (
-    <div className='container'>
+    <Container>
       <Column
         title='NO IDEA'
         tasksList={tasks['no-idea'].map((item) => {
           return <List key={item} item={item} />;
           // {
-          /* <button
-                onClick={(e) => {
-                  setTasks(
-                    produce(tasks, (draft) => {
-                      draft['learning'].push(item);
-                      draft['no-idea'] = draft['no-idea'].filter(
-                        (i) => i !== item
-                      );
-                    })
-                  );
-                }}
-              >
-                Pass
-              </button> */
+          /*  */
           // }
         })}
       >
@@ -177,6 +175,6 @@ export default function App() {
           validation={validation['ready']}
         />
       </Column>
-    </div>
+    </Container>
   );
 }
