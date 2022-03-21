@@ -52,7 +52,7 @@ export default function AppForm(props) {
         id={id}
       >
         <img src={plus} className='AddCardButton__icon' alt='' />
-        <p className='AddCardButton__text'>Add Task</p>
+        Add Task
       </button>
     );
   }
