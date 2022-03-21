@@ -198,6 +198,7 @@ li {
   outline: 0;
   border: 0;
   padding-right: auto;
+  cursor: pointer;
 }
 
 .list-content {
