@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './index.css';
 import AppForm from './AppForm';
 import Column from './Column';
+import List from './List';
 import { useImmer } from 'use-immer';
 import produce from 'immer';
 
@@ -79,13 +80,9 @@ export default function App() {
       <Column
         title='NO IDEA'
         tasksList={tasks['no-idea'].map((item) => {
-          return (
-            <div key={item}>
-              <li>
-                <span className='line'></span>
-                {item}
-              </li>
-              {/* <button
+          return <List key={item} item={item} />;
+          // {
+          /* <button
                 onClick={(e) => {
                   setTasks(
                     produce(tasks, (draft) => {
@@ -98,9 +95,8 @@ export default function App() {
                 }}
               >
                 Pass
-              </button> */}
-            </div>
-          );
+              </button> */
+          // }
         })}
       >
         <AppForm
