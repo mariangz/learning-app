@@ -93,6 +93,7 @@ export default function App() {
           <List
             key={item}
             item={item}
+            column='no-idea'
             onNextClick={() =>
               setTasks(
                 produce(tasks, (draft) => {
@@ -121,6 +122,7 @@ export default function App() {
           <List
             key={item}
             item={item}
+            column='learning'
             onNextClick={() =>
               setTasks(
                 produce(tasks, (draft) => {
@@ -151,6 +153,7 @@ export default function App() {
           <List
             key={item}
             item={item}
+            column='ready'
             onNextClick={() =>
               setTasks(
                 produce(tasks, (draft) => {

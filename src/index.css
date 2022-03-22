@@ -189,11 +189,12 @@ li {
   color: var(--black);
 }
 
-.next-icon {
+.next-icon,
+.prev-icon {
   width: 1.2rem;
 }
 
-.next-btn {
+.move-btn {
   background-color: var(--white);
   outline: 0;
   border: 0;
