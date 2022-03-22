@@ -21,7 +21,7 @@ export default function AppForm(props) {
         >
           <input
             onChange={onEntryChange}
-            placeholder='Enter the title of the task...'
+            placeholder='Enter title of task...'
             value={entry}
             className='AddCardButton__input'
             id={id}
@@ -31,6 +31,7 @@ export default function AppForm(props) {
           </p>
           <div className='AddCardButton__btn-container'>
             <button
+              type='button'
               onClick={onCancelClick}
               className='AddCardButton__btn cancel'
               id={id}
