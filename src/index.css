@@ -126,6 +126,7 @@ li {
 
 .validation-msg {
   color: red;
+  font-size: 0.8rem;
 }
 
 .AddCardButton__icon {
@@ -168,10 +169,9 @@ li {
   transition: all 0.5s ease-out;
 }
 
-.AddCardButton__btn.cancel:hover {
-  border: 2px solid var(--blue);
-  transition: all 0.5s ease-out;
-}
+/* .AddCardButton__btn.cancel:hover {
+border: 2px solid var(--blue); 
+}*/
 
 .AddCardButton__btn.save {
   background-color: var(--blue);
@@ -183,11 +183,11 @@ li {
   transition: all 0.5s ease-out;
 }
 
-.AddCardButton__btn.save:hover {
+/* .AddCardButton__btn.save:hover {
   background-color: var(--rose);
   border: 2px solid var(--blue);
   color: var(--black);
-}
+} */
 
 .next-icon,
 .prev-icon {
@@ -205,4 +205,23 @@ li {
 .list-content {
   display: flex;
   justify-content: space-between;
+}
+
+.addColumn {
+  border-style: dashed;
+}
+
+.column-title::placeholder {
+  font-size: 12px;
+  font-weight: 100;
+}
+.column-title {
+  font-weight: bold;
+  letter-spacing: 0.4px;
+  margin-bottom: 1rem;
+  font-size: 18px;
+  font-family: 'Rubik', sans-serif;
+  outline: 0;
+  border: 2px solid var(--black);
+  border-radius: 4px;
 }

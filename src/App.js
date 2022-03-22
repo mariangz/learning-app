@@ -27,14 +27,19 @@ export default function App() {
   function handleFormSubmit(event) {
     const e = event.target;
     event.preventDefault();
-    // if (!entry) {
-    //   setValidation(
-    //     produce(validation, (draft) => {
-    //       draft[e.id] = 'Enter a task';
-    //     })
-    //   );
-    //   return;
-    // }
+    if (!entry[e.id]) {
+      setValidation(
+        produce(validation, (draft) => {
+          draft[e.id] = 'Enter a task';
+        })
+      );
+      return;
+    }
+    setValidation(
+      produce(validation, (draft) => {
+        draft[e.id] = '';
+      })
+    );
     setTasks(
       produce(tasks, (draft) => {
         if (draft[e.id]) {
@@ -89,6 +94,7 @@ export default function App() {
     <Container>
       <Column
         title='NO IDEA'
+        add={false}
         tasksList={tasks['no-idea'].map((item) => (
           <List
             key={item}
@@ -118,6 +124,7 @@ export default function App() {
       </Column>
       <Column
         title='LEARNING'
+        add={false}
         tasksList={tasks['learning'].map((item) => (
           <List
             key={item}
@@ -159,6 +166,7 @@ export default function App() {
       </Column>
       <Column
         title='READY'
+        add={false}
         tasksList={tasks['ready'].map((item) => (
           <List
             key={item}
