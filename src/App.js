@@ -133,6 +133,16 @@ export default function App() {
                 })
               )
             }
+            onPrevClick={() =>
+              setTasks(
+                produce(tasks, (draft) => {
+                  draft['no-idea'].push(item);
+                  draft['learning'] = draft['learning'].filter(
+                    (i) => i !== item
+                  );
+                })
+              )
+            }
           />
         ))}
       >
@@ -157,6 +167,14 @@ export default function App() {
             onNextClick={() =>
               setTasks(
                 produce(tasks, (draft) => {
+                  draft['ready'] = draft['ready'].filter((i) => i !== item);
+                })
+              )
+            }
+            onPrevClick={() =>
+              setTasks(
+                produce(tasks, (draft) => {
+                  draft['learning'].push(item);
                   draft['ready'] = draft['ready'].filter((i) => i !== item);
                 })
               )

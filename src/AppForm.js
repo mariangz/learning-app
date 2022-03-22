@@ -31,6 +31,7 @@ export default function AppForm(props) {
           </p>
           <div className='AddCardButton__btn-container'>
             <button
+              type='button'
               onClick={onCancelClick}
               className='AddCardButton__btn cancel'
               id={id}
