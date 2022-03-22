@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './index.css';
 import AppForm from './AppForm';
+import AddButton from './AddColumn';
 import Column from './Column';
 import List from './List';
 import Container from './Container';
@@ -122,85 +123,7 @@ export default function App() {
           validation={validation['no-idea']}
         />
       </Column>
-      <Column
-        title='LEARNING'
-        add={false}
-        tasksList={tasks['learning'].map((item) => (
-          <List
-            key={item}
-            item={item}
-            column='learning'
-            onNextClick={() =>
-              setTasks(
-                produce(tasks, (draft) => {
-                  draft['ready'].push(item);
-                  draft['learning'] = draft['learning'].filter(
-                    (i) => i !== item
-                  );
-                })
-              )
-            }
-            onPrevClick={() =>
-              setTasks(
-                produce(tasks, (draft) => {
-                  draft['no-idea'].push(item);
-                  draft['learning'] = draft['learning'].filter(
-                    (i) => i !== item
-                  );
-                })
-              )
-            }
-          />
-        ))}
-      >
-        <AppForm
-          showInput={showInput}
-          entry={entry['learning']}
-          onFormSubmit={handleFormSubmit}
-          onShowInputClick={handleShowInputClick}
-          onEntryChange={handleEntryChange}
-          onCancelClick={handleCancelClick}
-          id='learning'
-          validation={validation['learning']}
-        />
-      </Column>
-      <Column
-        title='READY'
-        add={false}
-        tasksList={tasks['ready'].map((item) => (
-          <List
-            key={item}
-            item={item}
-            column='ready'
-            onNextClick={() =>
-              setTasks(
-                produce(tasks, (draft) => {
-                  draft['ready'] = draft['ready'].filter((i) => i !== item);
-                })
-              )
-            }
-            onPrevClick={() =>
-              setTasks(
-                produce(tasks, (draft) => {
-                  draft['learning'].push(item);
-                  draft['ready'] = draft['ready'].filter((i) => i !== item);
-                })
-              )
-            }
-          />
-        ))}
-      >
-        <AppForm
-          showInput={showInput}
-          entry={entry['ready']}
-          onFormSubmit={handleFormSubmit}
-          onShowInputClick={handleShowInputClick}
-          onEntryChange={handleEntryChange}
-          onCancelClick={handleCancelClick}
-          id='ready'
-          validation={validation['ready']}
-        />
-      </Column>
+      <AddButton />
     </Container>
   );
 }

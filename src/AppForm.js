@@ -1,44 +1,38 @@
 import plus from './images/plus.svg';
 export default function AppForm(props) {
-  const {
-    entry,
-    showInput,
-    onFormSubmit,
-    onShowInputClick,
-    onEntryChange,
-    onCancelClick,
-    id,
-    validation,
-  } = props;
   let btn;
-  if (showInput[id]) {
+  if (props.showInput[props.id]) {
     btn = (
       <>
         <form
-          onSubmit={onFormSubmit}
+          onSubmit={props.onFormSubmit}
           className='AddCardButton__container'
-          id={id}
+          id={props.id}
         >
           <input
-            onChange={onEntryChange}
+            onChange={props.onEntryChange}
             placeholder='Enter title of task...'
-            value={entry}
+            value={props.entry}
             className='AddCardButton__input'
-            id={id}
+            id={props.id}
           />
-          <p id={id} className='validation-msg'>
-            {validation}
+          <p id={props.id} className='validation-msg'>
+            {props.validation}
           </p>
           <div className='AddCardButton__btn-container'>
             <button
               type='button'
-              onClick={onCancelClick}
+              onClick={props.onCancelClick}
               className='AddCardButton__btn cancel'
-              id={id}
+              id={props.id}
             >
               Cancel
             </button>
-            <button type='submit' className='AddCardButton__btn save' id={id}>
+            <button
+              type='submit'
+              className='AddCardButton__btn save'
+              id={props.id}
+            >
               Save
             </button>
           </div>
@@ -48,9 +42,9 @@ export default function AppForm(props) {
   } else {
     btn = (
       <button
-        onClick={onShowInputClick}
+        onClick={props.onShowInputClick}
         className='AddCardButton__btn add'
-        id={id}
+        id={props.id}
       >
         <img src={plus} className='AddCardButton__icon' alt='' />
         Add Task

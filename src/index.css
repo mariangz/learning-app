@@ -215,6 +215,7 @@ border: 2px solid var(--blue);
   font-size: 12px;
   font-weight: 100;
 }
+
 .column-title {
   font-weight: bold;
   letter-spacing: 0.4px;
@@ -224,4 +225,12 @@ border: 2px solid var(--blue);
   outline: 0;
   border: 2px solid var(--black);
   border-radius: 4px;
+}
+
+.addColumn {
+  width: 244px;
+  background-color: var(--rose);
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
 }
