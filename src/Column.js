@@ -1,5 +1,7 @@
 import clsx from 'clsx';
-export default function Column({ title, tasksList, children, add }) {
+import GenericAddButton from './GenericAddButton';
+
+export default function Column({ title, tasksList, children, add, onFormSubmit, id, entry, validation }) {
   const classes = clsx({ column: true, addColumn: add });
   return (
     <div className={classes}>
@@ -8,6 +10,7 @@ export default function Column({ title, tasksList, children, add }) {
         <ul>{tasksList}</ul>
       </div>
       {children}
+      <GenericAddButton {...{onFormSubmit, id, entry, validation, labelName: 'Task'}} />
     </div>
   );
 }
