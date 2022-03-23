@@ -1,28 +1,27 @@
 import plus from './images/plus.svg';
-export default function AppForm(props) {
+
+export default function AddButton(props) {
   let btn;
-  if (props.showInput[props.id]) {
+  if (props.showInputColumn) {
     btn = (
       <>
         <form
-          onSubmit={props.onFormSubmit}
-          className='AddCardButton__container'
+          onSubmit={props.onColumnSubmit}
+          className='AddCardButton__container addBtnContainer'
           id={props.id}
         >
           <input
-            onChange={props.onEntryChange}
-            placeholder='Enter title of task...'
-            value={props.entry}
-            className='AddCardButton__input'
+            onChange={props.onColumnChange}
+            placeholder='Enter title of column...'
+            value={props.columnTitle}
+            className='AddCardButton__input inputColumn'
             id={props.id}
           />
-          <p id={props.id} className='validation-msg'>
-            {props.validation}
-          </p>
+          <p className='validation-msg'>{props.validationColumn}</p>
           <div className='AddCardButton__btn-container'>
             <button
               type='button'
-              onClick={props.onCancelClick}
+              onClick={props.onCancelColumnClick}
               className='AddCardButton__btn cancel'
               id={props.id}
             >
@@ -42,12 +41,12 @@ export default function AppForm(props) {
   } else {
     btn = (
       <button
-        onClick={props.onShowInputClick}
-        className='AddCardButton__btn add'
+        onClick={props.onShowInputColumnClick}
+        className='AddCardButton__btn addColumn'
         id={props.id}
       >
         <img src={plus} className='AddCardButton__icon' alt='' />
-        Add Task
+        New Column
       </button>
     );
   }
