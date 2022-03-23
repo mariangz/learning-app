@@ -23,7 +23,8 @@ export default function App() {
   const [showButton, setShowButton] = useImmer({});
   const [showInput, setShowInput] = useImmer({});
   const [validation, setValidation] = useState({});
-  console.log(entry);
+  const [showButtonColumn, setShowButtonColumn] = useState(true);
+  const [showInputColumn, setShowInputColumn] = useState(false);
 
   function handleFormSubmit(event) {
     const e = event.target;
@@ -91,6 +92,16 @@ export default function App() {
     });
   }
 
+  function handleCancelColumnClick() {
+    setShowButtonColumn((prevState) => !prevState);
+    setShowInputColumn((prevState) => !prevState);
+  }
+
+  function handleShowInputColumnClick() {
+    setShowButtonColumn((ShowButtonColumn) => !ShowButtonColumn);
+    setShowInputColumn((ShowInputColumn) => !ShowInputColumn);
+  }
+
   return (
     <Container>
       <Column
@@ -123,7 +134,12 @@ export default function App() {
           validation={validation['no-idea']}
         />
       </Column>
-      <AddButton />
+      <AddButton
+        showInputColumn={showInputColumn}
+        onCancelColumnClick={handleCancelColumnClick}
+        // onColumnChange={handleColumnChange}
+        onShowInputColumnClick={handleShowInputColumnClick}
+      />
     </Container>
   );
 }
