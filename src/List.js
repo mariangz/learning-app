@@ -3,7 +3,6 @@ import next from './images/next.svg';
 import prev from './images/prev.svg';
 
 export default function List({ item, onPrevClick, onNextClick, column, last }) {
-  console.log(column);
   return (
     <li>
       <div className='list-content'>
