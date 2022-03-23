@@ -8,11 +8,7 @@ import produce from 'immer';
 import GenericAddButton from './GenericAddButton';
 
 export default function App() {
-  const [tasks, setTasks] = useImmer({
-    // 'no-idea': [],
-    // learning: [],
-    // ready: [],
-  });
+  const [tasks, setTasks] = useImmer({});
 
   const [entry, setEntry] = useState({});
   const [validation, setValidation] = useState({});
@@ -87,8 +83,7 @@ export default function App() {
           }
         />
       ))}
-    >
-    </Column>
+    ></Column>
   ));
 
   return (
@@ -100,7 +95,7 @@ export default function App() {
         onEntryChange={() => {}}
         entry={undefined}
         validation={validationColumn}
-        labelName="Column"
+        labelName='Column'
       />
     </Container>
   );
