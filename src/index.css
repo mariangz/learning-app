@@ -47,11 +47,9 @@ ul {
 }
 
 li {
-  /* min-width: 100%; */
   background-color: var(--white);
   padding: 1rem;
   margin-top: 1rem;
-  /* width: 100%; */
   padding: 14px;
   font-weight: bold;
   letter-spacing: 0.4px;
@@ -61,7 +59,6 @@ li {
   outline: 0;
   border: 2px solid var(--black);
   border-radius: 4px;
-  /* height: 100px; */
   letter-spacing: 0.4px;
 }
 
@@ -73,10 +70,6 @@ li {
   background-color: var(--white);
 }
 
-/* .AddCardButton__container {
-  min-width: 100%;
-} */
-
 .AddCardButton__btn {
   border: 0;
   outline: 0;
@@ -86,11 +79,6 @@ li {
   border: 0;
   border-radius: 4px;
 }
-
-/* .AddCardButton__btn:focus,
-.AddCardButton__btn:hover {
-  background-color: rgba(94, 108, 132, 0.3);
-} */
 
 .task__title {
   font-size: 14px;
@@ -171,10 +159,6 @@ li {
   transition: all 0.5s ease-out;
 }
 
-/* .AddCardButton__btn.cancel:hover {
-border: 2px solid var(--blue); 
-}*/
-
 .AddCardButton__btn.save {
   background-color: var(--blue);
   color: var(--white);
@@ -184,12 +168,6 @@ border: 2px solid var(--blue);
   border: 2px solid var(--blue);
   transition: all 0.5s ease-out;
 }
-
-/* .AddCardButton__btn.save:hover {
-  background-color: var(--rose);
-  border: 2px solid var(--blue);
-  color: var(--black);
-} */
 
 .next-icon,
 .prev-icon {

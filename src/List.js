@@ -6,7 +6,6 @@ export default function List({ item, onPrevClick, onNextClick, column, last }) {
   console.log(column);
   return (
     <li>
-      {/* <span className='line'></span> */}
       <div className='list-content'>
         <button
           onClick={onPrevClick}
