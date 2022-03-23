@@ -10,21 +10,18 @@ import produce from 'immer';
 
 export default function App() {
   const [tasks, setTasks] = useImmer({
-    'no-idea': [],
-    learning: [],
-    ready: [],
+    // 'no-idea': [],
+    // learning: [],
+    // ready: [],
   });
 
-  const [entry, setEntry] = useState({
-    'no-idea': '',
-    learning: '',
-    ready: '',
-  });
+  const [entry, setEntry] = useState({});
   const [showButton, setShowButton] = useImmer({});
   const [showInput, setShowInput] = useImmer({});
   const [validation, setValidation] = useState({});
   const [showButtonColumn, setShowButtonColumn] = useState(true);
   const [showInputColumn, setShowInputColumn] = useState(false);
+  const [columnTitle, setColumnTitle] = useState('');
 
   function handleFormSubmit(event) {
     const e = event.target;
@@ -77,7 +74,6 @@ export default function App() {
 
   function handleEntryChange(event) {
     const e = event.target;
-
     setEntry({ ...entry, [e.id]: e.value });
   }
 
@@ -102,43 +98,73 @@ export default function App() {
     setShowInputColumn((ShowInputColumn) => !ShowInputColumn);
   }
 
+  function handleColumnChange(event) {
+    setColumnTitle(event.target.value);
+  }
+
+  function handleColumnSubmit(event) {
+    console.log(columnTitle);
+    event.preventDefault();
+    setTasks((draft) => {
+      draft[columnTitle] = [];
+    });
+    setShowButtonColumn((ShowButtonColumn) => !ShowButtonColumn);
+    setShowInputColumn((ShowInputColumn) => !ShowInputColumn);
+    setColumnTitle('');
+  }
+
+  const listColumns = Object.keys(tasks).map((keyOfTask, index, array) => (
+    <Column
+      title={keyOfTask}
+      add={false}
+      tasksList={tasks[keyOfTask].map((item) => (
+        <List
+          key={item}
+          item={item}
+          column={index}
+          last={index === array.length - 1}
+          onNextClick={() =>
+            setTasks(
+              produce(tasks, (draft) => {
+                draft[array[index + 1]].push(item);
+                draft[keyOfTask] = draft[keyOfTask].filter((i) => i !== item);
+              })
+            )
+          }
+          onPrevClick={() =>
+            setTasks(
+              produce(tasks, (draft) => {
+                draft[array[index - 1]].push(item);
+                draft[keyOfTask] = draft[keyOfTask].filter((i) => i !== item);
+              })
+            )
+          }
+        />
+      ))}
+    >
+      <AppForm
+        showInput={showInput}
+        entry={entry[keyOfTask]}
+        onFormSubmit={handleFormSubmit}
+        onShowInputClick={handleShowInputClick}
+        onEntryChange={handleEntryChange}
+        onCancelClick={handleCancelClick}
+        id={keyOfTask}
+        validation={validation[keyOfTask]}
+      />
+    </Column>
+  ));
+
   return (
     <Container>
-      <Column
-        title='NO IDEA'
-        add={false}
-        tasksList={tasks['no-idea'].map((item) => (
-          <List
-            key={item}
-            item={item}
-            column='no-idea'
-            onNextClick={() =>
-              setTasks(
-                produce(tasks, (draft) => {
-                  draft['learning'].push(item);
-                  draft['no-idea'] = draft['no-idea'].filter((i) => i !== item);
-                })
-              )
-            }
-          />
-        ))}
-      >
-        <AppForm
-          showInput={showInput}
-          entry={entry['no-idea']}
-          onFormSubmit={handleFormSubmit}
-          onShowInputClick={handleShowInputClick}
-          onEntryChange={handleEntryChange}
-          onCancelClick={handleCancelClick}
-          id='no-idea'
-          validation={validation['no-idea']}
-        />
-      </Column>
+      {listColumns}
       <AddButton
         showInputColumn={showInputColumn}
         onCancelColumnClick={handleCancelColumnClick}
-        // onColumnChange={handleColumnChange}
+        onColumnChange={handleColumnChange}
         onShowInputColumnClick={handleShowInputColumnClick}
+        onColumnSubmit={handleColumnSubmit}
+        value={columnTitle}
       />
     </Container>
   );

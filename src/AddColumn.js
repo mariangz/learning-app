@@ -13,7 +13,7 @@ export default function AddButton(props) {
           <input
             onChange={props.onColumnChange}
             placeholder='Enter title of column...'
-            value={props.entry}
+            value={props.columnTitle}
             className='AddCardButton__input inputColumn'
             id={props.id}
           />
