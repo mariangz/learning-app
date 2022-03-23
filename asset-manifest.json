@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/learning-app/static/css/main.6bba5ffb.css",
-    "main.js": "/learning-app/static/js/main.f9d1bbf2.js",
+    "main.css": "/learning-app/static/css/main.9ffe4acf.css",
+    "main.js": "/learning-app/static/js/main.fcb0ae16.js",
     "static/media/plus.svg": "/learning-app/static/media/plus.8d02a0e78d0777091abbbd438316e277.svg",
     "static/media/prev.svg": "/learning-app/static/media/prev.d2bbc7701788c200370a0f806ea02648.svg",
     "static/media/next.svg": "/learning-app/static/media/next.b08550494b55073214ea6623df53b0a2.svg",
     "index.html": "/learning-app/index.html",
-    "main.6bba5ffb.css.map": "/learning-app/static/css/main.6bba5ffb.css.map",
-    "main.f9d1bbf2.js.map": "/learning-app/static/js/main.f9d1bbf2.js.map"
+    "main.9ffe4acf.css.map": "/learning-app/static/css/main.9ffe4acf.css.map",
+    "main.fcb0ae16.js.map": "/learning-app/static/js/main.fcb0ae16.js.map"
   },
   "entrypoints": [
-    "static/css/main.6bba5ffb.css",
-    "static/js/main.f9d1bbf2.js"
+    "static/css/main.9ffe4acf.css",
+    "static/js/main.fcb0ae16.js"
   ]
 }
