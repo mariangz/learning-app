@@ -54,6 +54,7 @@ export default function App() {
 
   const listColumns = Object.keys(tasks).map((keyOfTask, index, array) => (
     <Column
+      key={keyOfTask}
       title={keyOfTask}
       add={false}
       entry={entry[keyOfTask]}
