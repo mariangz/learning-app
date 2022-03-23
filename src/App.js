@@ -46,6 +46,7 @@ export default function App() {
       setValidationColumn('Enter a column');
       return;
     }
+    setValidationColumn('');
     setTasks((draft) => {
       draft[value] = [];
     });
