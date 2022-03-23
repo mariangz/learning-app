@@ -61,7 +61,7 @@ li {
   outline: 0;
   border: 2px solid var(--black);
   border-radius: 4px;
-  height: 100px;
+  /* height: 100px; */
   letter-spacing: 0.4px;
 }
 
@@ -207,6 +207,7 @@ border: 2px solid var(--blue);
 .list-content {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .addColumn {
@@ -244,4 +245,8 @@ border: 2px solid var(--blue);
 
 .addBtnContainer {
   min-height: 137px;
+}
+
+.hidden {
+  visibility: hidden;
 }
