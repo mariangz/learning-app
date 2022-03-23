@@ -19,6 +19,7 @@ export default function App() {
   const [showButton, setShowButton] = useImmer({});
   const [showInput, setShowInput] = useImmer({});
   const [validation, setValidation] = useState({});
+  const [validationColumn, setValidationColumn] = useState('');
   const [showButtonColumn, setShowButtonColumn] = useState(true);
   const [showInputColumn, setShowInputColumn] = useState(false);
   const [columnTitle, setColumnTitle] = useState('');
@@ -105,6 +106,10 @@ export default function App() {
   function handleColumnSubmit(event) {
     console.log(columnTitle);
     event.preventDefault();
+    if (!columnTitle) {
+      setValidationColumn('Enter a task');
+      return;
+    }
     setTasks((draft) => {
       draft[columnTitle] = [];
     });
@@ -165,6 +170,7 @@ export default function App() {
         onShowInputColumnClick={handleShowInputColumnClick}
         onColumnSubmit={handleColumnSubmit}
         value={columnTitle}
+        validationColumn={validationColumn}
       />
     </Container>
   );

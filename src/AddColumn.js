@@ -17,9 +17,7 @@ export default function AddButton(props) {
             className='AddCardButton__input inputColumn'
             id={props.id}
           />
-          {/* <p id={props.id} className='validation-msg'>
-            {props.validation}
-          </p> */}
+          <p className='validation-msg'>{props.validationColumn}</p>
           <div className='AddCardButton__btn-container'>
             <button
               type='button'
