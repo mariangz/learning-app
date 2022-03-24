@@ -40,6 +40,22 @@ export default function App() {
     setEntry({ ...entry, [id]: '' });
   }
 
+  function handleRemoveTaskSubmit(item, id) {
+    setTasks(() =>
+      produce(tasks, (draft) => {
+        draft[id] = draft[id].filter((i) => i !== item);
+      })
+    );
+  }
+
+  function handleRemoveColumnSubmit(title) {
+    setTasks(() =>
+      produce(tasks, (draft) => {
+        delete draft[title];
+      })
+    );
+  }
+
   function handleColumnSubmit(value) {
     if (!value) {
       setValidationColumn('Enter a column');
@@ -60,11 +76,14 @@ export default function App() {
       onFormSubmit={handleFormSubmit}
       id={keyOfTask}
       validation={validation[keyOfTask]}
+      onRemoveColumnSubmit={handleRemoveColumnSubmit}
       tasksList={tasks[keyOfTask].map((item) => (
         <List
           key={item}
           item={item}
           column={index}
+          id={keyOfTask}
+          onRemoveSubmit={handleRemoveTaskSubmit}
           last={index === array.length - 1}
           onNextClick={() =>
             setTasks(

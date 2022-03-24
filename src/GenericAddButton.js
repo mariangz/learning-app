@@ -3,7 +3,6 @@ import clsx from 'clsx';
 import plus from './images/plus.svg';
 
 export default function GenericAddButton(props) {
-  console.log(props);
   const { onFormSubmit, id, validation, labelName = 'lol' } = props;
   const [formIsVisible, setFormIsVisible] = useState(false);
   const [entry, setEntry] = useState('');

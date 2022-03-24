@@ -2,7 +2,20 @@ import clsx from 'clsx';
 import next from './images/next.svg';
 import prev from './images/prev.svg';
 
-export default function List({ item, onPrevClick, onNextClick, column, last }) {
+export default function List({
+  item,
+  onPrevClick,
+  onNextClick,
+  column,
+  last,
+  onRemoveSubmit,
+  id,
+  value,
+}) {
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    onRemoveSubmit(item, id);
+  }
   return (
     <li>
       <div className='list-content'>
@@ -19,6 +32,9 @@ export default function List({ item, onPrevClick, onNextClick, column, last }) {
         >
           <img className='prev-icon' src={next} alt='' />
         </button>
+        <form onSubmit={handleFormSubmit} id={id} item={item}>
+          <button>Remove</button>
+        </form>
       </div>
     </li>
   );
