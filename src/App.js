@@ -9,7 +9,6 @@ import GenericAddButton from './GenericAddButton';
 
 export default function App() {
   const [tasks, setTasks] = useImmer({});
-
   const [entry, setEntry] = useState({});
   const [validation, setValidation] = useState({});
   const [validationColumn, setValidationColumn] = useState('');
@@ -94,7 +93,7 @@ export default function App() {
       <GenericAddButton
         onFormSubmit={handleColumnSubmit}
         id={undefined}
-        onEntryChange={() => {}}
+        // onEntryChange={() => {}}
         entry={undefined}
         validation={validationColumn}
         labelName='Column'
