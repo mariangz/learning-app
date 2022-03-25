@@ -12,7 +12,7 @@ export default function App() {
   const [entry, setEntry] = useState({});
   const [validation, setValidation] = useState({});
   const [validationColumn, setValidationColumn] = useState('');
-
+  console.log(tasks);
   function handleFormSubmit(value, id) {
     if (!value) {
       setValidation(
@@ -48,9 +48,17 @@ export default function App() {
     );
   }
 
-  function handleRemoveColumnSubmit(title) {
+  function handleRemoveColumn(title) {
     setTasks(() =>
       produce(tasks, (draft) => {
+        delete draft[title];
+      })
+    );
+  }
+  function handleUpdateColumn(newTitle, title) {
+    setTasks(() =>
+      produce(tasks, (draft) => {
+        draft[newTitle] = draft[title];
         delete draft[title];
       })
     );
@@ -76,7 +84,8 @@ export default function App() {
       onFormSubmit={handleFormSubmit}
       id={keyOfTask}
       validation={validation[keyOfTask]}
-      onRemoveColumnSubmit={handleRemoveColumnSubmit}
+      onRemoveColumn={handleRemoveColumn}
+      onUpdateColumn={handleUpdateColumn}
       tasksList={tasks[keyOfTask].map((item) => (
         <List
           key={item}

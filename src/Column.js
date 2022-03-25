@@ -1,5 +1,10 @@
 import clsx from 'clsx';
+import { useState } from 'react';
 import GenericAddButton from './GenericAddButton';
+import trash from './images/trash.svg';
+import edit from './images/edit.svg';
+import cancel from './images/cancel.svg';
+import save from './images/save.svg';
 
 export default function Column({
   title,
@@ -10,19 +15,53 @@ export default function Column({
   id,
   entry,
   validation,
-  onRemoveColumnSubmit,
+  onRemoveColumn,
+  onUpdateColumn,
 }) {
+  const [editVisisble, setEditVisible] = useState(false);
+  const [newTitle, setNewTitle] = useState(title);
   const classes = clsx({ column: true, addColumn: add });
+  console.log(newTitle);
   function handleFormSubmit(event) {
     event.preventDefault();
-    onRemoveColumnSubmit(title);
+    setNewTitle(newTitle);
+    setEditVisible(false);
+    // onUpdateColumn(title, newTitle);
   }
   return (
     <div className={classes}>
-      <h2 className='column__title'>{title}</h2>
-      <form onSubmit={handleFormSubmit} title={title}>
-        <button>Remove</button>
-      </form>
+      {editVisisble ? (
+        <form className='title-container input' onSubmit={handleFormSubmit}>
+          <input
+            type='text'
+            className='AddCardButton__btn input'
+            value={newTitle}
+            onChange={(e) => setNewTitle(e.target.value)}
+          />
+          <button
+            className='input-btns cancel-btn'
+            onClick={() => setEditVisible(false)}
+          >
+            <img src={cancel} alt='' />
+          </button>
+          <button className='input-btns save' type='submit'>
+            <img src={save} alt='' />
+          </button>
+        </form>
+      ) : (
+        <div className='title-container'>
+          <h2 className='column__title'>{title}</h2>
+          <button
+            className='edit-btns edit-btn'
+            onClick={() => setEditVisible(true)}
+          >
+            <img src={edit} alt='' />
+          </button>
+          <button className='edit-btns' onClick={() => onRemoveColumn(title)}>
+            <img src={trash} alt='' />
+          </button>
+        </div>
+      )}
       <div className='column__body'>
         <ul>{tasksList}</ul>
       </div>

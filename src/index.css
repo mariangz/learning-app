@@ -33,7 +33,6 @@ body {
   align-items: center;
   gap: 1rem;
   padding: 1rem;
-
   min-width: 280px;
   border: solid 2px var(--black);
   border-radius: 4px;
@@ -46,7 +45,7 @@ ul {
   list-style-type: none;
 }
 
-li {
+.item {
   background-color: var(--white);
   padding: 1rem;
   margin-top: 1rem;
@@ -87,7 +86,6 @@ li {
 .column__title {
   font-size: 18px;
   font-weight: 400;
-  align-self: flex-start;
 }
 
 .column__body {
@@ -174,6 +172,10 @@ li {
   width: 1.2rem;
 }
 
+.next-icon {
+  position: relative;
+}
+
 .move-btn {
   background-color: var(--white);
   outline: 0;
@@ -215,7 +217,7 @@ li {
 
 .inputColumn {
   max-width: 244px;
-  height: 85px;
+  height: 80px;
   font-size: 18px;
   font-weight: 400;
   align-self: flex-start;
@@ -227,4 +229,80 @@ li {
 
 .hidden {
   visibility: hidden;
+}
+
+.edit {
+  /* min-width: 100%; */
+}
+
+.title-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  /* border: 1px red solid; */
+}
+
+.trash-btn,
+.edit-btn {
+  outline: 0;
+  border: 0;
+  width: 1rem;
+  background-color: var(--rose);
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+}
+
+.trash-icon,
+.edit-icon {
+  width: 0.8rem;
+}
+
+.edit-btn {
+  margin-right: auto;
+  margin-left: 0.5rem;
+}
+
+.edit-icons {
+  /* width: 0.8rem; */
+}
+
+.edit-btns {
+  background-color: var(--rose);
+  width: 0.8rem;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
+.edit-visible {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title-container.input {
+  background-color: var(--white);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.input-btns.save {
+  margin-right: 10px;
+  margin: 10px;
+}
+.edit-btns.cancel {
+  background-color: var(--white);
+}
+.input-btns {
+  width: 0.9rem;
+  background-color: var(--white);
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
+.AddCardButton__btn.input {
+  font-size: 18px;
+  font-weight: 400;
 }

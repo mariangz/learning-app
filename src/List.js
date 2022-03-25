@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import next from './images/next.svg';
 import prev from './images/prev.svg';
-
+import trash from './images/trash.svg';
 export default function List({
   item,
   onPrevClick,
@@ -17,8 +17,11 @@ export default function List({
     onRemoveSubmit(item, id);
   }
   return (
-    <li>
+    <li className='item'>
       <div className='list-content'>
+        <button className='trash-btn'>
+          <img src={trash} className='trash-icon' alt='' />
+        </button>
         <button
           onClick={onPrevClick}
           className={clsx({ 'move-btn': true, hidden: column === 0 })}
@@ -32,9 +35,6 @@ export default function List({
         >
           <img className='prev-icon' src={next} alt='' />
         </button>
-        <form onSubmit={handleFormSubmit} id={id} item={item}>
-          <button>Remove</button>
-        </form>
       </div>
     </li>
   );
