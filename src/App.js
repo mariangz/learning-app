@@ -8,58 +8,55 @@ import produce from 'immer';
 import GenericAddButton from './GenericAddButton';
 
 export default function App() {
-  const [tasks, setTasks] = useImmer({});
+  const [columns, setColumns] = useImmer([]);
+  console.log(columns);
   const [entry, setEntry] = useState({});
   const [validation, setValidation] = useState({});
   const [validationColumn, setValidationColumn] = useState('');
-  console.log(tasks);
-  function handleFormSubmit(value, id) {
+
+  function handleFormSubmit(value, index) {
     if (!value) {
       setValidation(
         produce(validation, (draft) => {
-          draft[id] = 'Enter a task';
+          draft[index] = 'Enter a task';
         })
       );
       return;
     }
-    setValidation(
-      produce(validation, (draft) => {
-        draft[id] = '';
+    // setValidation(
+    //   produce(validation, (draft) => {
+    //     draft[index] = '';
+    //   })
+    // );
+
+    setColumns(
+      produce(columns, (draft) => {
+        draft[index].tasks.push(value);
       })
     );
-    setTasks(
-      produce(tasks, (draft) => {
-        if (draft[id]) {
-          draft[id].push(value);
-        } else {
-          draft[id] = [];
-          draft[id].push(value);
-        }
-      })
-    );
-    setEntry({ ...entry, [id]: '' });
+    setEntry({ ...entry, [index]: '' });
   }
 
   function handleRemoveTaskSubmit(item, id) {
-    setTasks(() =>
-      produce(tasks, (draft) => {
+    setColumns(() =>
+      produce(columns, (draft) => {
         draft[id] = draft[id].filter((i) => i !== item);
       })
     );
   }
 
-  function handleRemoveColumn(title) {
-    setTasks(() =>
-      produce(tasks, (draft) => {
-        delete draft[title];
+  function handleRemoveColumn(column) {
+    setColumns(() =>
+      produce(columns, (draft) => {
+        draft.splice(draft[column], 1);
       })
     );
   }
-  function handleUpdateColumn(newTitle, title) {
-    setTasks(() =>
-      produce(tasks, (draft) => {
-        draft[newTitle] = draft[title];
-        delete draft[title];
+
+  function handleUpdateColumn(newTitle, index) {
+    setColumns(() =>
+      produce(columns, (draft) => {
+        draft[index].title = newTitle;
       })
     );
   }
@@ -70,43 +67,46 @@ export default function App() {
       return;
     }
     setValidationColumn('');
-    setTasks((draft) => {
-      draft[value] = [];
+    setColumns((draft) => {
+      draft.push({ title: value, tasks: [] });
     });
   }
 
-  const listColumns = Object.keys(tasks).map((keyOfTask, index, array) => (
+  const listColumns = columns.map((column, index, array) => (
     <Column
-      key={keyOfTask}
-      title={keyOfTask}
+      key={column.title}
+      title={column.title}
       add={false}
-      entry={entry[keyOfTask]}
-      onFormSubmit={handleFormSubmit}
-      id={keyOfTask}
-      validation={validation[keyOfTask]}
-      onRemoveColumn={handleRemoveColumn}
+      index={index}
+      onFormSubmit={(value) => handleFormSubmit(value, index)}
+      validation={validation[column]}
+      onRemoveColumn={(column) => handleRemoveColumn(column)}
       onUpdateColumn={handleUpdateColumn}
-      tasksList={tasks[keyOfTask].map((item) => (
+      tasksList={column.tasks.map((item) => (
         <List
           key={item}
           item={item}
           column={index}
-          id={keyOfTask}
+          id={column}
           onRemoveSubmit={handleRemoveTaskSubmit}
           last={index === array.length - 1}
           onNextClick={() =>
-            setTasks(
-              produce(tasks, (draft) => {
-                draft[array[index + 1]].push(item);
-                draft[keyOfTask] = draft[keyOfTask].filter((i) => i !== item);
+            setColumns(
+              produce(columns, (draft) => {
+                draft[index + 1].tasks.push(item);
+                draft[index].tasks = draft[index].tasks.filter(
+                  (i) => i !== item
+                );
               })
             )
           }
           onPrevClick={() =>
-            setTasks(
-              produce(tasks, (draft) => {
-                draft[array[index - 1]].push(item);
-                draft[keyOfTask] = draft[keyOfTask].filter((i) => i !== item);
+            setColumns(
+              produce(columns, (draft) => {
+                draft[index - 1].tasks.push(item);
+                draft[index].tasks = draft[index].tasks.filter(
+                  (i) => i !== item
+                );
               })
             )
           }
