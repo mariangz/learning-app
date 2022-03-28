@@ -8,37 +8,62 @@ import produce from 'immer';
 import GenericAddButton from './GenericAddButton';
 
 export default function App() {
-  const [tasks, setTasks] = useImmer({});
-
+  const [columns, setColumns] = useImmer([]);
   const [entry, setEntry] = useState({});
   const [validation, setValidation] = useState({});
   const [validationColumn, setValidationColumn] = useState('');
-
-  function handleFormSubmit(value, id) {
+  function handleFormSubmit(value, index) {
     if (!value) {
       setValidation(
         produce(validation, (draft) => {
-          draft[id] = 'Enter a task';
+          draft[index] = 'Enter a task';
         })
       );
       return;
     }
-    setValidation(
-      produce(validation, (draft) => {
-        draft[id] = '';
+    // setValidation(
+    //   produce(validation, (draft) => {
+    //     draft[index] = '';
+    //   })
+    // );
+
+    setColumns(
+      produce(columns, (draft) => {
+        draft[index].tasks.push(value);
       })
     );
-    setTasks(
-      produce(tasks, (draft) => {
-        if (draft[id]) {
-          draft[id].push(value);
-        } else {
-          draft[id] = [];
-          draft[id].push(value);
-        }
+    setEntry({ ...entry, [index]: '' });
+  }
+
+  function handleRemoveTask(indexCol, index) {
+    setColumns(() =>
+      produce(columns, (draft) => {
+        draft[indexCol].tasks.splice(index, 1);
       })
     );
-    setEntry({ ...entry, [id]: '' });
+  }
+
+  function handleRemoveColumn(index) {
+    setColumns(() =>
+      produce(columns, (draft) => {
+        draft.splice(index, 1);
+      })
+    );
+  }
+
+  function handleUpdateColumn(newTitle, index) {
+    setColumns(() =>
+      produce(columns, (draft) => {
+        draft[index].title = newTitle;
+      })
+    );
+  }
+  function handleUpdateTask(column, index, newTitle) {
+    setColumns(() =>
+      produce(columns, (draft) => {
+        draft[column].tasks[index] = newTitle;
+      })
+    );
   }
 
   function handleColumnSubmit(value) {
@@ -47,39 +72,50 @@ export default function App() {
       return;
     }
     setValidationColumn('');
-    setTasks((draft) => {
-      draft[value] = [];
+    setColumns((draft) => {
+      draft.push({ title: value, tasks: [] });
     });
   }
 
-  const listColumns = Object.keys(tasks).map((keyOfTask, index, array) => (
+  const listColumns = columns.map((column, indexCol, arrayCol) => (
     <Column
-      key={keyOfTask}
-      title={keyOfTask}
+      key={column.title}
+      title={column.title}
       add={false}
-      entry={entry[keyOfTask]}
-      onFormSubmit={handleFormSubmit}
-      id={keyOfTask}
-      validation={validation[keyOfTask]}
-      tasksList={tasks[keyOfTask].map((item) => (
+      index={indexCol}
+      column={indexCol}
+      onFormSubmit={(value) => handleFormSubmit(value, indexCol)}
+      validation={validation[column]}
+      onRemoveColumn={() => handleRemoveColumn(indexCol)}
+      onUpdateColumn={handleUpdateColumn}
+      tasksList={column.tasks.map((item, index) => (
         <List
           key={item}
           item={item}
-          column={index}
-          last={index === array.length - 1}
+          column={indexCol}
+          indexCol={indexCol}
+          index={index}
+          id={indexCol}
+          onRemoveTask={() => handleRemoveTask(indexCol, index)}
+          onUpdateTask={handleUpdateTask}
+          last={indexCol === arrayCol.length - 1}
           onNextClick={() =>
-            setTasks(
-              produce(tasks, (draft) => {
-                draft[array[index + 1]].push(item);
-                draft[keyOfTask] = draft[keyOfTask].filter((i) => i !== item);
+            setColumns(
+              produce(columns, (draft) => {
+                draft[indexCol + 1].tasks.push(item);
+                draft[indexCol].tasks = draft[indexCol].tasks.filter(
+                  (i) => i !== item
+                );
               })
             )
           }
           onPrevClick={() =>
-            setTasks(
-              produce(tasks, (draft) => {
-                draft[array[index - 1]].push(item);
-                draft[keyOfTask] = draft[keyOfTask].filter((i) => i !== item);
+            setColumns(
+              produce(columns, (draft) => {
+                draft[indexCol - 1].tasks.push(item);
+                draft[indexCol].tasks = draft[indexCol].tasks.filter(
+                  (i) => i !== item
+                );
               })
             )
           }
@@ -94,7 +130,6 @@ export default function App() {
       <GenericAddButton
         onFormSubmit={handleColumnSubmit}
         id={undefined}
-        onEntryChange={() => {}}
         entry={undefined}
         validation={validationColumn}
         labelName='Column'

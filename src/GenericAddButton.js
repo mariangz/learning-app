@@ -18,7 +18,7 @@ export default function GenericAddButton(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onFormSubmit(entry, id);
+    onFormSubmit(entry);
     if (!entry) return;
     setEntry('');
     setFormIsVisible(false);
