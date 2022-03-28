@@ -1,16 +1,20 @@
 {
   "files": {
-    "main.css": "/learning-app/static/css/main.9ffe4acf.css",
-    "main.js": "/learning-app/static/js/main.fcb0ae16.js",
+    "main.css": "/learning-app/static/css/main.5d15ffbd.css",
+    "main.js": "/learning-app/static/js/main.2158666c.js",
+    "static/media/cancel.svg": "/learning-app/static/media/cancel.c32e2d02e4fd04fcc60ceab4328c7336.svg",
+    "static/media/trash.svg": "/learning-app/static/media/trash.f0d1b68a2d98d55e0e2bcb0a4b199c58.svg",
     "static/media/plus.svg": "/learning-app/static/media/plus.8d02a0e78d0777091abbbd438316e277.svg",
+    "static/media/edit.svg": "/learning-app/static/media/edit.f4279e5bc6c692be08bea65ecdcf1212.svg",
     "static/media/prev.svg": "/learning-app/static/media/prev.d2bbc7701788c200370a0f806ea02648.svg",
     "static/media/next.svg": "/learning-app/static/media/next.b08550494b55073214ea6623df53b0a2.svg",
+    "static/media/save.svg": "/learning-app/static/media/save.be7c5034058e2dc3ad88051af1af3f9f.svg",
     "index.html": "/learning-app/index.html",
-    "main.9ffe4acf.css.map": "/learning-app/static/css/main.9ffe4acf.css.map",
-    "main.fcb0ae16.js.map": "/learning-app/static/js/main.fcb0ae16.js.map"
+    "main.5d15ffbd.css.map": "/learning-app/static/css/main.5d15ffbd.css.map",
+    "main.2158666c.js.map": "/learning-app/static/js/main.2158666c.js.map"
   },
   "entrypoints": [
-    "static/css/main.9ffe4acf.css",
-    "static/js/main.fcb0ae16.js"
+    "static/css/main.5d15ffbd.css",
+    "static/js/main.2158666c.js"
   ]
 }
