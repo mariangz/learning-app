@@ -9,18 +9,9 @@ import GenericAddButton from './GenericAddButton';
 
 export default function App() {
   const [columns, setColumns] = useImmer([]);
-  const [entry, setEntry] = useState({});
-  const [validation, setValidation] = useState({});
   const [validationColumn, setValidationColumn] = useState('');
   function handleFormSubmit(value, index) {
-    if (!value) {
-      setValidation(
-        produce(validation, (draft) => {
-          draft[index] = 'Enter a task';
-        })
-      );
-      return;
-    }
+    // if (!value) validation;
     // setValidation(
     //   produce(validation, (draft) => {
     //     draft[index] = '';
@@ -32,7 +23,7 @@ export default function App() {
         draft[index].tasks.push(value);
       })
     );
-    setEntry({ ...entry, [index]: '' });
+    // setEntry({ ...entry, [index]: '' });
   }
 
   function handleRemoveTask(indexCol, index) {
@@ -58,6 +49,7 @@ export default function App() {
       })
     );
   }
+
   function handleUpdateTask(column, index, newTitle) {
     setColumns(() =>
       produce(columns, (draft) => {
@@ -85,7 +77,7 @@ export default function App() {
       index={indexCol}
       column={indexCol}
       onFormSubmit={(value) => handleFormSubmit(value, indexCol)}
-      validation={validation[column]}
+      // validation={validation}
       onRemoveColumn={() => handleRemoveColumn(indexCol)}
       onUpdateColumn={handleUpdateColumn}
       tasksList={column.tasks.map((item, index) => (

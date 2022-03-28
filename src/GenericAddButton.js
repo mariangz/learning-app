@@ -3,9 +3,11 @@ import clsx from 'clsx';
 import plus from './images/plus.svg';
 
 export default function GenericAddButton(props) {
-  const { onFormSubmit, id, validation, labelName = 'lol' } = props;
+  const { onFormSubmit, id, labelName = 'lol' } = props;
   const [formIsVisible, setFormIsVisible] = useState(false);
   const [entry, setEntry] = useState('');
+  // const [entry, setEntry] = useState({});
+  const [validation, setValidation] = useState(true);
 
   const onEntryChange = (event) => {
     const e = event.target;
@@ -18,8 +20,12 @@ export default function GenericAddButton(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (!entry) {
+      setValidation(!validation);
+      return;
+    }
     onFormSubmit(entry);
-    if (!entry) return;
+
     setEntry('');
     setFormIsVisible(false);
   };
@@ -39,8 +45,8 @@ export default function GenericAddButton(props) {
             className='AddCardButton__input'
             id={id}
           />
-          <p id={id} className='validation-msg'>
-            {validation}
+          <p className='validation-msg'>
+            {validation ? '' : `Enter a ${labelName}`}
           </p>
           <div className='AddCardButton__btn-container'>
             <button

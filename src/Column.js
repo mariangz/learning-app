@@ -19,7 +19,7 @@ export default function Column({
   onRemoveColumn,
   onUpdateColumn,
 }) {
-  const [editVisisble, setEditVisible] = useState(false);
+  const [editVisible, setEditVisible] = useState(false);
   const [newTitle, setNewTitle] = useState(title);
   const classes = clsx({ column: true, addColumn: add });
 
@@ -31,7 +31,7 @@ export default function Column({
   }
   return (
     <div className={classes}>
-      {editVisisble ? (
+      {editVisible ? (
         <form className='title-container input' onSubmit={handleFormSubmit}>
           <input
             type='text'
