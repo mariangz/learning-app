@@ -21,6 +21,7 @@ export default function Column({
 }) {
   const [editVisible, setEditVisible] = useState(false);
   const [newTitle, setNewTitle] = useState(title);
+  const [showBtns, setShowBtns] = useState(false);
   const classes = clsx({ column: true, addColumn: add });
 
   function handleFormSubmit(event) {
@@ -51,24 +52,32 @@ export default function Column({
           </button>
         </form>
       ) : (
-        <div className='title-container'>
+        <div
+          className='title-container'
+          onMouseEnter={() => setShowBtns(true)}
+          onMouseLeave={() => setShowBtns(false)}
+        >
           <h2 className='column__title'>{title}</h2>
-          <button
-            type='button'
-            className='edit-btns edit-btn'
-            onClick={() => setEditVisible(true)}
-          >
-            <img src={edit} alt='' />
-          </button>
-          <button
-            type='button'
-            className='edit-btns'
-            onClick={() => {
-              onRemoveColumn(title);
-            }}
-          >
-            <img src={trash} alt='' />
-          </button>
+          {showBtns && (
+            <>
+              <button
+                type='button'
+                className='edit-btns edit-btn'
+                onClick={() => setEditVisible(true)}
+              >
+                <img src={edit} alt='' />
+              </button>
+              <button
+                type='button'
+                className='edit-btns'
+                onClick={() => {
+                  onRemoveColumn(title);
+                }}
+              >
+                <img src={trash} alt='' />
+              </button>
+            </>
+          )}
         </div>
       )}
       <div className='column__body'>

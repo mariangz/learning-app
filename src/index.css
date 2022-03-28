@@ -319,6 +319,10 @@ ul {
   gap: 1rem;
 }
 
+btn-tasks-container.hide {
+  visibility: hidden;
+}
+
 .trash-btn.tasks,
 .edit-btn.tasks {
   background-color: var(--white);

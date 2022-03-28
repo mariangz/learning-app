@@ -20,6 +20,7 @@ export default function List({
 }) {
   const [editVisisble, setEditVisible] = useState(false);
   const [newTitle, setNewTitle] = useState(item);
+  const [showBtns, setShowBtns] = useState(true);
   function handleFormSubmit(event) {
     event.preventDefault();
     setNewTitle(newTitle);
@@ -55,9 +56,19 @@ export default function List({
             </button>
           </form>
         ) : (
-          <div className='task-container'>
+          <div
+            className='task-container'
+            onMouseEnter={() => setShowBtns(false)}
+            onMouseLeave={() => setShowBtns(true)}
+          >
             <h4>{item}</h4>
-            <div className='btn-tasks-container'>
+
+            <div
+              className={clsx({
+                'btn-tasks-container': true,
+                hidden: showBtns,
+              })}
+            >
               <button
                 className='edit-btn tasks'
                 onClick={() => setEditVisible(true)}

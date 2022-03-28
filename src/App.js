@@ -11,19 +11,11 @@ export default function App() {
   const [columns, setColumns] = useImmer([]);
   const [validationColumn, setValidationColumn] = useState('');
   function handleFormSubmit(value, index) {
-    // if (!value) validation;
-    // setValidation(
-    //   produce(validation, (draft) => {
-    //     draft[index] = '';
-    //   })
-    // );
-
     setColumns(
       produce(columns, (draft) => {
         draft[index].tasks.push(value);
       })
     );
-    // setEntry({ ...entry, [index]: '' });
   }
 
   function handleRemoveTask(indexCol, index) {
