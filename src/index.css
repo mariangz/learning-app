@@ -306,3 +306,20 @@ ul {
   font-size: 18px;
   font-weight: 400;
 }
+
+.task-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.btn-tasks-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.trash-btn.tasks,
+.edit-btn.tasks {
+  background-color: var(--white);
+}

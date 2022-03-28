@@ -12,8 +12,9 @@ export default function Column({
   children,
   add,
   onFormSubmit,
-  id,
+  index,
   entry,
+  column,
   validation,
   onRemoveColumn,
   onUpdateColumn,
@@ -21,12 +22,12 @@ export default function Column({
   const [editVisisble, setEditVisible] = useState(false);
   const [newTitle, setNewTitle] = useState(title);
   const classes = clsx({ column: true, addColumn: add });
-  console.log(newTitle);
+
   function handleFormSubmit(event) {
     event.preventDefault();
     setNewTitle(newTitle);
     setEditVisible(false);
-    // onUpdateColumn(title, newTitle);
+    onUpdateColumn(newTitle, index);
   }
   return (
     <div className={classes}>
@@ -39,6 +40,7 @@ export default function Column({
             onChange={(e) => setNewTitle(e.target.value)}
           />
           <button
+            type='button'
             className='input-btns cancel-btn'
             onClick={() => setEditVisible(false)}
           >
@@ -52,12 +54,19 @@ export default function Column({
         <div className='title-container'>
           <h2 className='column__title'>{title}</h2>
           <button
+            type='button'
             className='edit-btns edit-btn'
             onClick={() => setEditVisible(true)}
           >
             <img src={edit} alt='' />
           </button>
-          <button className='edit-btns' onClick={() => onRemoveColumn(title)}>
+          <button
+            type='button'
+            className='edit-btns'
+            onClick={() => {
+              onRemoveColumn(title);
+            }}
+          >
             <img src={trash} alt='' />
           </button>
         </div>
@@ -69,7 +78,6 @@ export default function Column({
       <GenericAddButton
         {...{
           onFormSubmit,
-          id,
           entry,
           validation,
           labelName: 'Task',

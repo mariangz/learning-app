@@ -9,11 +9,9 @@ import GenericAddButton from './GenericAddButton';
 
 export default function App() {
   const [columns, setColumns] = useImmer([]);
-  console.log(columns);
   const [entry, setEntry] = useState({});
   const [validation, setValidation] = useState({});
   const [validationColumn, setValidationColumn] = useState('');
-
   function handleFormSubmit(value, index) {
     if (!value) {
       setValidation(
@@ -37,18 +35,18 @@ export default function App() {
     setEntry({ ...entry, [index]: '' });
   }
 
-  function handleRemoveTaskSubmit(item, id) {
+  function handleRemoveTask(indexCol, index) {
     setColumns(() =>
       produce(columns, (draft) => {
-        draft[id] = draft[id].filter((i) => i !== item);
+        draft[indexCol].tasks.splice(index, 1);
       })
     );
   }
 
-  function handleRemoveColumn(column) {
+  function handleRemoveColumn(index) {
     setColumns(() =>
       produce(columns, (draft) => {
-        draft.splice(draft[column], 1);
+        draft.splice(index, 1);
       })
     );
   }
@@ -57,6 +55,13 @@ export default function App() {
     setColumns(() =>
       produce(columns, (draft) => {
         draft[index].title = newTitle;
+      })
+    );
+  }
+  function handleUpdateTask(column, index, newTitle) {
+    setColumns(() =>
+      produce(columns, (draft) => {
+        draft[column].tasks[index] = newTitle;
       })
     );
   }
@@ -72,29 +77,33 @@ export default function App() {
     });
   }
 
-  const listColumns = columns.map((column, index, array) => (
+  const listColumns = columns.map((column, indexCol, arrayCol) => (
     <Column
       key={column.title}
       title={column.title}
       add={false}
-      index={index}
-      onFormSubmit={(value) => handleFormSubmit(value, index)}
+      index={indexCol}
+      column={indexCol}
+      onFormSubmit={(value) => handleFormSubmit(value, indexCol)}
       validation={validation[column]}
-      onRemoveColumn={(column) => handleRemoveColumn(column)}
+      onRemoveColumn={() => handleRemoveColumn(indexCol)}
       onUpdateColumn={handleUpdateColumn}
-      tasksList={column.tasks.map((item) => (
+      tasksList={column.tasks.map((item, index) => (
         <List
           key={item}
           item={item}
-          column={index}
-          id={column}
-          onRemoveSubmit={handleRemoveTaskSubmit}
-          last={index === array.length - 1}
+          column={indexCol}
+          indexCol={indexCol}
+          index={index}
+          id={indexCol}
+          onRemoveTask={() => handleRemoveTask(indexCol, index)}
+          onUpdateTask={handleUpdateTask}
+          last={indexCol === arrayCol.length - 1}
           onNextClick={() =>
             setColumns(
               produce(columns, (draft) => {
-                draft[index + 1].tasks.push(item);
-                draft[index].tasks = draft[index].tasks.filter(
+                draft[indexCol + 1].tasks.push(item);
+                draft[indexCol].tasks = draft[indexCol].tasks.filter(
                   (i) => i !== item
                 );
               })
@@ -103,8 +112,8 @@ export default function App() {
           onPrevClick={() =>
             setColumns(
               produce(columns, (draft) => {
-                draft[index - 1].tasks.push(item);
-                draft[index].tasks = draft[index].tasks.filter(
+                draft[indexCol - 1].tasks.push(item);
+                draft[indexCol].tasks = draft[indexCol].tasks.filter(
                   (i) => i !== item
                 );
               })
@@ -121,7 +130,6 @@ export default function App() {
       <GenericAddButton
         onFormSubmit={handleColumnSubmit}
         id={undefined}
-        // onEntryChange={() => {}}
         entry={undefined}
         validation={validationColumn}
         labelName='Column'

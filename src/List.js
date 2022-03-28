@@ -13,13 +13,18 @@ export default function List({
   last,
   onRemoveSubmit,
   column,
+  onRemoveTask,
+  onUpdateTask,
   value,
+  index,
 }) {
   const [editVisisble, setEditVisible] = useState(false);
   const [newTitle, setNewTitle] = useState(item);
   function handleFormSubmit(event) {
     event.preventDefault();
-    onRemoveSubmit(item, column);
+    setNewTitle(newTitle);
+    setEditVisible(false);
+    onUpdateTask(column, index, newTitle);
   }
   return (
     <li className='item'>
@@ -53,10 +58,16 @@ export default function List({
           <div className='task-container'>
             <h4>{item}</h4>
             <div className='btn-tasks-container'>
-              <button className='trash-btn tasks'>
+              <button
+                className='edit-btn tasks'
+                onClick={() => setEditVisible(true)}
+              >
                 <img src={edit} className='edit-icon' alt='' />
               </button>
-              <button className='trash-btn tasks'>
+              <button
+                className='trash-btn tasks'
+                onClick={() => onRemoveTask(item, column)}
+              >
                 <img src={trash} className='trash-icon' alt='' />
               </button>
             </div>
