@@ -231,16 +231,11 @@ ul {
   visibility: hidden;
 }
 
-.edit {
-  /* min-width: 100%; */
-}
-
 .title-container {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-content: center;
-  /* border: 1px red solid; */
 }
 
 .trash-btn,
@@ -262,10 +257,6 @@ ul {
 .edit-btn {
   margin-right: auto;
   margin-left: 0.5rem;
-}
-
-.edit-icons {
-  /* width: 0.8rem; */
 }
 
 .edit-btns {
@@ -291,6 +282,7 @@ ul {
   margin-right: 10px;
   margin: 10px;
 }
+
 .edit-btns.cancel {
   background-color: var(--white);
 }
