@@ -34,6 +34,7 @@ export default function Column({
             className='AddCardButton__btn input'
             value={newTitle}
             onChange={(e) => setNewTitle(e.target.value)}
+            maxLength='10'
           />
           <button
             type='button'
