@@ -19,7 +19,6 @@ export default function List({
 }) {
   const [editVisisble, setEditVisible] = useState(false);
   const [newTitle, setNewTitle] = useState(item);
-  const [showBtns, setShowBtns] = useState(true);
 
   function handleFormSubmit(event) {
     event.preventDefault();
@@ -37,46 +36,39 @@ export default function List({
           <img className='prev-icon' src={prev} alt='' />
         </button>
         {editVisisble ? (
-          <form className='title-container input' onSubmit={handleFormSubmit}>
-            <input
-              type='text'
-              className='AddCardButton__btn input'
-              value={newTitle}
-              onChange={(e) => setNewTitle(e.target.value)}
-            />
-            <button
-              type='button'
-              className='input-btns cancel-btn'
-              onClick={() => setEditVisible(false)}
-            >
-              <img src={cancel} alt='' />
-            </button>
-            <button className='input-btns save' type='submit'>
-              <img src={save} alt='' />
-            </button>
+          <form className='form-container input' onSubmit={handleFormSubmit}>
+            <div className='column-container'>
+              <input
+                type='text'
+                className='AddCardButton__btn input'
+                value={newTitle}
+                onChange={(e) => setNewTitle(e.target.value)}
+                maxLength='10'
+              />
+              <button
+                type='button'
+                className='edit-buttons cancel'
+                onClick={() => setEditVisible(false)}
+              >
+                <img src={cancel} alt='' />
+              </button>
+              <button className='edit-buttons' type='submit'>
+                <img src={save} alt='' />
+              </button>
+            </div>
           </form>
         ) : (
-          <div
-            className='task-container'
-            onMouseEnter={() => setShowBtns(false)}
-            onMouseLeave={() => setShowBtns(true)}
-          >
-            <h4>{item}</h4>
-
-            <div
-              className={clsx({
-                'btn-tasks-container': true,
-                hidden: showBtns,
-              })}
-            >
+          <div className='task-container'>
+            <div className='tasks-buttons-container'>
               <button
-                className='edit-btn tasks'
+                className='edit-buttons tasks'
                 onClick={() => setEditVisible(true)}
               >
                 <img src={edit} className='edit-icon' alt='' />
               </button>
+              <h4>{item}</h4>
               <button
-                className='trash-btn tasks'
+                className='edit-buttons tasks'
                 onClick={() => onRemoveTask(item, column)}
               >
                 <img src={trash} className='trash-icon' alt='' />

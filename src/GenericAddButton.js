@@ -43,6 +43,7 @@ export default function GenericAddButton(props) {
             value={entry}
             className='AddCardButton__input'
             id={id}
+            maxLength='15'
           />
           <p className='validation-msg'>
             {validation ? '' : `Enter a ${labelName}`}
