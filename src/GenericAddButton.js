@@ -3,15 +3,13 @@ import clsx from 'clsx';
 import plus from './images/plus.svg';
 
 export default function GenericAddButton(props) {
-  const { onFormSubmit, id, labelName = 'lol' } = props;
+  const { onFormSubmit, id, labelName } = props;
   const [formIsVisible, setFormIsVisible] = useState(false);
   const [entry, setEntry] = useState('');
-  // const [entry, setEntry] = useState({});
   const [validation, setValidation] = useState(true);
 
   const onEntryChange = (event) => {
-    const e = event.target;
-    setEntry(e.value);
+    setEntry(event.target.value);
   };
 
   const toggleForm = () => {
@@ -24,10 +22,11 @@ export default function GenericAddButton(props) {
       setValidation(!validation);
       return;
     }
+    setValidation(true);
     onFormSubmit(entry);
 
     setEntry('');
-    setFormIsVisible(false);
+    setFormIsVisible(!validation);
   };
 
   return (
@@ -51,7 +50,10 @@ export default function GenericAddButton(props) {
           <div className='AddCardButton__btn-container'>
             <button
               type='button'
-              onClick={toggleForm}
+              onClick={() => {
+                toggleForm();
+                setValidation(!validation);
+              }}
               className='AddCardButton__btn cancel'
               id={id}
             >

@@ -1,15 +1,14 @@
-import { useState } from 'react';
-import './index.css';
+import { useImmer } from 'use-immer';
+import produce from 'immer';
+import './index.scss';
 import Column from './Column';
 import List from './List';
 import Container from './Container';
-import { useImmer } from 'use-immer';
-import produce from 'immer';
 import GenericAddButton from './GenericAddButton';
 
 export default function App() {
   const [columns, setColumns] = useImmer([]);
-  const [validationColumn, setValidationColumn] = useState('');
+
   function handleFormSubmit(value, index) {
     setColumns(
       produce(columns, (draft) => {
@@ -51,11 +50,6 @@ export default function App() {
   }
 
   function handleColumnSubmit(value) {
-    if (!value) {
-      setValidationColumn('Enter a column');
-      return;
-    }
-    setValidationColumn('');
     setColumns((draft) => {
       draft.push({ title: value, tasks: [] });
     });
@@ -65,11 +59,9 @@ export default function App() {
     <Column
       key={column.title}
       title={column.title}
-      add={false}
       index={indexCol}
       column={indexCol}
       onFormSubmit={(value) => handleFormSubmit(value, indexCol)}
-      // validation={validation}
       onRemoveColumn={() => handleRemoveColumn(indexCol)}
       onUpdateColumn={handleUpdateColumn}
       tasksList={column.tasks.map((item, index) => (
@@ -115,7 +107,6 @@ export default function App() {
         onFormSubmit={handleColumnSubmit}
         id={undefined}
         entry={undefined}
-        validation={validationColumn}
         labelName='Column'
       />
     </Container>

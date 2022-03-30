@@ -6,21 +6,21 @@ import trash from './images/trash.svg';
 import edit from './images/edit.svg';
 import cancel from './images/cancel.svg';
 import save from './images/save.svg';
+
 export default function List({
   item,
   onPrevClick,
   onNextClick,
   last,
-  onRemoveSubmit,
   column,
   onRemoveTask,
   onUpdateTask,
-  value,
   index,
 }) {
   const [editVisisble, setEditVisible] = useState(false);
   const [newTitle, setNewTitle] = useState(item);
   const [showBtns, setShowBtns] = useState(true);
+
   function handleFormSubmit(event) {
     event.preventDefault();
     setNewTitle(newTitle);

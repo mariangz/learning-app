@@ -10,11 +10,9 @@ export default function Column({
   title,
   tasksList,
   children,
-  add,
   onFormSubmit,
   index,
   entry,
-  column,
   validation,
   onRemoveColumn,
   onUpdateColumn,
@@ -22,7 +20,6 @@ export default function Column({
   const [editVisible, setEditVisible] = useState(false);
   const [newTitle, setNewTitle] = useState(title);
   const [showBtns, setShowBtns] = useState(false);
-  const classes = clsx({ column: true, addColumn: add });
 
   function handleFormSubmit(event) {
     event.preventDefault();
@@ -31,7 +28,7 @@ export default function Column({
     onUpdateColumn(newTitle, index);
   }
   return (
-    <div className={classes}>
+    <div className='column'>
       {editVisible ? (
         <form className='title-container input' onSubmit={handleFormSubmit}>
           <input
