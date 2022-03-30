@@ -52,7 +52,7 @@ export default function List({
               >
                 <img src={cancel} alt='' />
               </button>
-              <button className='edit-buttons' type='submit'>
+              <button className='edit-buttons save' type='submit'>
                 <img src={save} alt='' />
               </button>
             </div>
