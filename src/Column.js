@@ -28,40 +28,40 @@ export default function Column({
   return (
     <div className='column'>
       {editVisible ? (
-        <form className='form column-container' onSubmit={handleFormSubmit}>
+        <form className='form' onSubmit={handleFormSubmit}>
           <input
             type='text'
-            className='AddCardButton__btn input'
+            className='input'
             value={newTitle}
             onChange={(e) => setNewTitle(e.target.value)}
             maxLength='10'
           />
           <button
             type='button'
-            className='edit-buttons'
+            className='edit-button accent'
             onClick={() => setEditVisible(!editVisible)}
           >
             <img src={cancel} alt='' />
           </button>
-          <button className='edit-buttons' type='submit'>
+          <button className='edit-button accent' type='submit'>
             <img src={save} alt='' />
           </button>
         </form>
       ) : (
-        <div className='title column-container'>
-          <h2 className='column__title'>{title}</h2>
+        <div className='header'>
+          <h2 className='title'>{title}</h2>
 
-          <div className='column-buttons-container'>
+          <div className='button-container'>
             <button
               type='button'
-              className='edit-buttons'
+              className='edit-button accent'
               onClick={() => setEditVisible(true)}
             >
               <img src={edit} alt='' />
             </button>
             <button
               type='button'
-              className='edit-buttons'
+              className='edit-button accent'
               onClick={() => {
                 onRemoveColumn(title);
               }}
@@ -71,7 +71,7 @@ export default function Column({
           </div>
         </div>
       )}
-      <div className='column__body'>
+      <div className='body'>
         <ul>{tasksList}</ul>
       </div>
       {children}
