@@ -13,94 +13,142 @@ $border-radius: 4px;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+body {
   font-family: $font-stack;
-}
-
-.container {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  padding: 1rem;
-  height: 100vh;
-}
-
-.column {
-  background-color: $rose-color;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  min-width: 260px;
-  width: 280px;
-  border: solid 2px $black-color;
-  border-radius: $border-radius;
-}
-
-ul {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-
-h4 {
-  font-weight: 400;
-}
-
-.item {
-  background-color: $white-color;
-  padding: 1rem;
-  margin-top: 1rem;
-  letter-spacing: 0.4px;
-  margin-bottom: 1rem;
-  font-size: 18px;
-  font-family: $font-stack;
-  outline: 0;
-  border: 2px solid $black-color;
-  border-radius: $border-radius;
-  letter-spacing: 0.4px;
-}
-
-.AddCardButton__btn {
-  border: 0;
-  outline: 0;
-  cursor: pointer;
-  font-weight: bold;
-  border-radius: $border-radius;
-}
-
-.task__title {
   font-size: 14px;
 }
 
-.column__title {
-  font-size: 18px;
-  font-weight: 400;
+button {
+  cursor: pointer;
 }
 
-.column__body {
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
   width: 100%;
 }
 
-.AddCardButton__input {
+img {
+  display: block;
+  width: 1rem;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.container {
+  align-items: flex-start;
+  display: flex;
+  // height: 100vh;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.column {
+  align-items: center;
+  background-color: $rose-color;
+  border: solid 2px $black-color;
+  border-radius: $border-radius;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 260px;
+  padding: 1rem;
+  width: 280px;
+
+  .body {
+    min-width: 100%;
+    // border: 2px solid red;
+  }
+}
+
+.form {
+  align-content: center;
+  gap: 0.5rem;
+  justify-content: space-between;
+  max-width: 244px;
+
+  .input {
+    border: 2px solid $black-color;
+    border-radius: $border-radius;
+    font-size: 18px;
+    height: 100px;
+    letter-spacing: 0.4px;
+    margin-bottom: 1rem;
+    padding: 14px;
+    outline: 0;
+    width: 100%;
+    max-width: 244px;
+    height: 80px;
+    font-size: 18px;
+    font-weight: 400;
+    align-self: flex-start;
+
+    &.error {
+      border: 2px solid $red-color;
+    }
+  }
+}
+
+.header {
+  align-content: center;
+  gap: 0.5rem;
+  justify-content: space-between;
   width: 100%;
-  height: 100px;
-  padding: 14px;
-  letter-spacing: 0.4px;
-  margin-bottom: 1rem;
-  font-size: 18px;
-  font-family: 'Rubik', sans-serif;
-  outline: 0;
+}
+
+.item {
   border: 2px solid $black-color;
   border-radius: $border-radius;
+  background-color: $white-color;
+  font-size: 18px;
+  font-family: $font-stack;
+  letter-spacing: 0.4px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  min-width: 100%;
+
+  .content {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    min-width: 100%;
+    border: 2px solid red;
+  }
 }
 
-.edit-buttons.cancel {
-  margin-left: 0.5rem;
+.button-container {
+  justify-content: flex-end;
 }
 
-.AddCardButton__input::placeholder {
+.button {
+  background-color: $rose-color;
+  // border: 1px solid red;
+  border: 0;
+  border-radius: $border-radius;
+  display: flex;
+  gap: 1rem;
+  padding: 0.5rem 1.3rem;
+  font-weight: bold;
+
+  &.add {
+    padding: 1rem;
+    width: 244px;
+    background-color: $peach-color;
+  }
+
+  &.save {
+    background-color: $blue-color;
+    color: $white-color;
+  }
+}
+
+.input::placeholder {
   font-size: 12px;
   font-weight: 100;
 }
@@ -111,64 +159,9 @@ h4 {
   margin-bottom: 0.5rem;
 }
 
-.AddCardButton__icon {
-  width: 14px;
+.icon {
   display: block;
-}
-
-.AddCardButton__btn-container {
-  display: flex;
-  gap: 1rem;
-  justify-content: flex-end;
-}
-
-.AddCardButton__btn.add {
-  background-color: $peach-color;
-  width: 100%;
-  padding: 1rem;
-  display: flex;
-  gap: 1rem;
-}
-
-.AddCardButton__btn.cancel {
-  background-color: $rose-color;
-  font-weight: bold;
-  padding: 0.5rem 1.2rem;
-  border: 2px solid $rose-color;
-  transition: all 0.5s ease-out;
-}
-
-.AddCardButton__btn.save {
-  background-color: $blue-color;
-  color: $white-color;
-  padding: 0.5rem 1.2rem;
-  border-radius: $border-radius;
-  color: $white-color;
-  border: 2px solid $blue-color;
-  transition: all 0.5s ease-out;
-}
-
-.next-icon,
-.prev-icon {
-  width: 1.2rem;
-}
-
-.next-icon {
-  position: relative;
-}
-
-.move-btn {
-  background-color: $white-color;
-  outline: 0;
-  border: 0;
-  padding-right: auto;
-  cursor: pointer;
-}
-
-.list-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  width: 14px;
 }
 
 .column-title::placeholder {
@@ -177,74 +170,32 @@ h4 {
 }
 
 .column-title {
-  letter-spacing: 0.4px;
-  margin-bottom: 1rem;
-  font-size: 18px;
-  font-family: 'Rubik', sans-serif;
-  outline: 0;
   border: 2px solid $black-color;
   border-radius: $border-radius;
-}
-
-.AddCardButton__btn.addColumn {
-  width: 244px;
-  background-color: $rose-color;
-}
-
-.inputColumn {
-  max-width: 244px;
-  height: 80px;
   font-size: 18px;
-  font-weight: 400;
-  align-self: flex-start;
+  letter-spacing: 0.4px;
+  margin-bottom: 1rem;
+  outline: 0;
 }
 
-.addBtnContainer {
-  min-height: 137px;
-}
-
-.hidden {
-  visibility: hidden;
-}
-
-.column-container {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-content: center;
-  gap: 0.5rem;
-}
-
-.form {
-  .edit-buttons {
-    background-color: $rose-color;
+.header {
+  .title {
+    font-size: 18px;
+    font-weight: 400;
   }
 }
 
-.column-container:hover .edit-buttons {
+.column-container:hover .edit-button {
   visibility: visible;
 }
 
-.tasks-buttons-container {
-  width: 100%;
+.button-container {
   display: flex;
   gap: 0.5rem;
-}
-.task-container:hover .edit-buttons.tasks {
-  visibility: visible;
-}
-
-.column-buttons-container {
-  display: flex;
-  justify-content: space-between;
   width: 100%;
 }
-
-.column-buttons-container {
-  .edit-buttons {
-    margin-left: 1rem;
-    background-color: $rose-color;
-  }
+.task-container:hover .edit-button.tasks {
+  visibility: visible;
 }
 
 .title-container.input {
@@ -253,31 +204,22 @@ h4 {
   font-weight: 400;
 }
 
-.edit-buttons {
+.edit-button {
+  background-color: $white-color;
   border: 0;
   outline: 0;
-  cursor: pointer;
   visibility: hidden;
-  background-color: $white-color;
-}
 
-.edit-buttons.save {
-  margin-left: 0.5rem;
-}
+  &.accent {
+    background-color: $rose-color;
+    margin-left: 1rem;
+  }
 
-.edit-buttons {
+  &.save {
+    margin-left: 0.5rem;
+  }
+
   img {
     width: 0.8rem;
   }
-}
-
-.AddCardButton__btn.input {
-  font-size: 18px;
-  font-weight: 400;
-  text-indent: 0.5rem;
-  cursor: auto;
-  width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
