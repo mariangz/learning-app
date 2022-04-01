@@ -45,7 +45,7 @@ export default function GenericAddButton(props) {
           <p className='validation-msg'>
             {validation ? '' : `Enter a ${labelName}`}
           </p>
-          <div className='button-container'>
+          <div className='button-container add-column'>
             <button
               type='button'
               onClick={() => {

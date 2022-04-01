@@ -1,9 +1,12 @@
 import { useState } from 'react';
+import clsx from 'clsx';
 import GenericAddButton from './GenericAddButton';
 import trash from './images/trash.svg';
 import edit from './images/edit.svg';
 import cancel from './images/cancel.svg';
 import save from './images/save.svg';
+import next from './images/next.svg';
+import prev from './images/prev.svg';
 
 export default function Column({
   title,
@@ -15,6 +18,9 @@ export default function Column({
   validation,
   onRemoveColumn,
   onUpdateColumn,
+  onMovePrevColumnClick,
+  onMoveNextColumnClick,
+  last,
 }) {
   const [editVisible, setEditVisible] = useState(false);
   const [newTitle, setNewTitle] = useState(title);
@@ -27,6 +33,20 @@ export default function Column({
   }
   return (
     <div className='column'>
+      <div className='button-container'>
+        <button
+          onClick={onMovePrevColumnClick}
+          className={clsx({ hidden: index === 0 })}
+        >
+          <img src={prev} alt='' />
+        </button>
+        <button
+          onClick={onMoveNextColumnClick}
+          className={clsx({ hidden: last })}
+        >
+          <img src={next} alt='' />
+        </button>
+      </div>
       {editVisible ? (
         <form className='form column' onSubmit={handleFormSubmit}>
           <input

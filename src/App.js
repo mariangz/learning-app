@@ -8,6 +8,7 @@ import GenericAddButton from './GenericAddButton';
 
 export default function App() {
   const [columns, setColumns] = useImmer([]);
+  console.log(columns);
 
   function handleFormSubmit(value, index) {
     setColumns(
@@ -57,7 +58,24 @@ export default function App() {
 
   const listColumns = columns.map((column, indexCol, arrayCol) => (
     <Column
+      onMovePrevColumnClick={() => {
+        setColumns(() =>
+          produce(columns, (draft) => {
+            draft.splice(indexCol, 1);
+            draft.splice(indexCol - 1, 0, column);
+          })
+        );
+      }}
+      onMoveNextColumnClick={() => {
+        setColumns(() =>
+          produce(columns, (draft) => {
+            draft.splice(indexCol, 1);
+            draft.splice(indexCol + 1, 0, column);
+          })
+        );
+      }}
       key={column.title}
+      last={indexCol === arrayCol.length - 1}
       title={column.title}
       index={indexCol}
       column={indexCol}
