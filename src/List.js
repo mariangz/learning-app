@@ -6,21 +6,20 @@ import trash from './images/trash.svg';
 import edit from './images/edit.svg';
 import cancel from './images/cancel.svg';
 import save from './images/save.svg';
+
 export default function List({
   item,
   onPrevClick,
   onNextClick,
   last,
-  onRemoveSubmit,
   column,
   onRemoveTask,
   onUpdateTask,
-  value,
   index,
 }) {
   const [editVisisble, setEditVisible] = useState(false);
   const [newTitle, setNewTitle] = useState(item);
-  const [showBtns, setShowBtns] = useState(true);
+
   function handleFormSubmit(event) {
     event.preventDefault();
     setNewTitle(newTitle);
@@ -29,67 +28,61 @@ export default function List({
   }
   return (
     <li className='item'>
-      <div className='list-content'>
-        <button
-          onClick={onPrevClick}
-          className={clsx({ 'move-btn': true, hidden: column === 0 })}
-        >
-          <img className='prev-icon' src={prev} alt='' />
-        </button>
+      <div className='content'>
         {editVisisble ? (
-          <form className='title-container input' onSubmit={handleFormSubmit}>
+          <form className='form task' onSubmit={handleFormSubmit}>
             <input
               type='text'
-              className='AddCardButton__btn input'
+              className='input task'
               value={newTitle}
               onChange={(e) => setNewTitle(e.target.value)}
+              maxLength='10'
             />
-            <button
-              type='button'
-              className='input-btns cancel-btn'
-              onClick={() => setEditVisible(false)}
-            >
-              <img src={cancel} alt='' />
-            </button>
-            <button className='input-btns save' type='submit'>
-              <img src={save} alt='' />
-            </button>
-          </form>
-        ) : (
-          <div
-            className='task-container'
-            onMouseEnter={() => setShowBtns(false)}
-            onMouseLeave={() => setShowBtns(true)}
-          >
-            <h4>{item}</h4>
-
-            <div
-              className={clsx({
-                'btn-tasks-container': true,
-                hidden: showBtns,
-              })}
-            >
+            <div className='button-container task'>
               <button
-                className='edit-btn tasks'
-                onClick={() => setEditVisible(true)}
+                type='button'
+                className='edit-button cancel'
+                onClick={() => setEditVisible(false)}
               >
-                <img src={edit} className='edit-icon' alt='' />
+                <img src={cancel} alt='' />
               </button>
-              <button
-                className='trash-btn tasks'
-                onClick={() => onRemoveTask(item, column)}
-              >
-                <img src={trash} className='trash-icon' alt='' />
+              <button className='edit-button save' type='submit'>
+                <img src={save} alt='' />
               </button>
             </div>
-          </div>
+          </form>
+        ) : (
+          <>
+            <button
+              onClick={onPrevClick}
+              className={clsx({ hidden: column === 0 })}
+            >
+              <img src={prev} alt='' />
+            </button>
+            <div className='task-container'>
+              <div className='button-container'>
+                <button
+                  className='edit-button tasks'
+                  onClick={() => setEditVisible(true)}
+                >
+                  <img src={edit} alt='' />
+                </button>
+                <h3>{item}</h3>
+                <button
+                  className='edit-button tasks'
+                  onClick={() => onRemoveTask(item, column)}
+                >
+                  <img src={trash} alt='' />
+                </button>
+              </div>
+            </div>
+          </>
         )}
-        <button
-          onClick={onNextClick}
-          className={clsx({ 'move-btn': true, hidden: last })}
-        >
-          <img className='prev-icon' src={next} alt='' />
-        </button>
+        {!editVisisble && (
+          <button onClick={onNextClick} className={clsx({ hidden: last })}>
+            <img src={next} alt='' />
+          </button>
+        )}
       </div>
     </li>
   );
