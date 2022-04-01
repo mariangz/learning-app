@@ -8,7 +8,6 @@ import GenericAddButton from './GenericAddButton';
 
 export default function App() {
   const [columns, setColumns] = useImmer([]);
-  console.log(columns);
 
   function handleFormSubmit(value, index) {
     setColumns(
