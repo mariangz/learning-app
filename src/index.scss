@@ -1,13 +1,13 @@
-$rose-color: #fdf5f2;
-$coral-color: #eb6f5b;
-$peach-color: #feceb4;
-$blue-color: #1411ec;
-$grey-color: #5e6c84;
-$white-color: #fff;
 $black-color: #000;
+$blue-color: #1411ec;
+$coral-color: #eb6f5b;
+$grey-color: #5e6c84;
+$peach-color: #feceb4;
 $red-color: red;
-$font-stack: 'Rubik', sans-serif;
+$rose-color: #fdf5f2;
+$white-color: #fff;
 $border-radius: 4px;
+$font-stack: 'Rubik', sans-serif;
 
 * {
   box-sizing: border-box;
@@ -22,6 +22,8 @@ body {
 
 button {
   cursor: pointer;
+  background-color: transparent;
+  border: 0;
 }
 
 ul {
@@ -32,8 +34,7 @@ ul {
 }
 
 img {
-  display: block;
-  width: 1rem;
+  width: 0.7rem;
 }
 
 .hidden {
@@ -43,7 +44,6 @@ img {
 .container {
   align-items: flex-start;
   display: flex;
-  // height: 100vh;
   gap: 1rem;
   padding: 1rem;
 }
@@ -62,31 +62,51 @@ img {
 
   .body {
     min-width: 100%;
-    // border: 2px solid red;
+  }
+
+  .header {
+    align-content: center;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: space-between;
+    width: 100%;
+
+    :hover .edit-button {
+      visibility: visible;
+    }
+
+    .title {
+      font-size: 18px;
+      font-weight: 400;
+      white-space: nowrap;
+    }
   }
 }
 
 .form {
-  align-content: center;
-  gap: 0.5rem;
-  justify-content: space-between;
   max-width: 244px;
 
+  &.column:hover .edit-button {
+    visibility: visible;
+  }
+
   .input {
-    border: 2px solid $black-color;
+    align-self: flex-start;
+    outline: 2px dashed $black-color;
+    border: 0;
     border-radius: $border-radius;
     font-size: 18px;
-    height: 100px;
-    letter-spacing: 0.4px;
-    margin-bottom: 1rem;
-    padding: 14px;
-    outline: 0;
-    width: 100%;
-    max-width: 244px;
-    height: 80px;
-    font-size: 18px;
     font-weight: 400;
-    align-self: flex-start;
+    height: 80px;
+    letter-spacing: 0.4px;
+    min-width: 100%;
+    padding: 14px;
+    width: 100%;
+
+    &.task {
+      height: 0;
+      margin-bottom: 0;
+    }
 
     &.error {
       border: 2px solid $red-color;
@@ -94,52 +114,51 @@ img {
   }
 }
 
-.header {
-  align-content: center;
-  gap: 0.5rem;
-  justify-content: space-between;
-  width: 100%;
-}
-
 .item {
   border: 2px solid $black-color;
   border-radius: $border-radius;
   background-color: $white-color;
-  font-size: 18px;
   font-family: $font-stack;
   letter-spacing: 0.4px;
   margin-top: 1rem;
+  min-width: 100%;
   margin-bottom: 1rem;
   padding: 1rem;
-  min-width: 100%;
 
   .content {
     align-items: center;
     display: flex;
     justify-content: space-between;
     min-width: 100%;
-    border: 2px solid red;
+  }
+
+  h3 {
+    font-weight: 400;
   }
 }
 
 .button-container {
   justify-content: flex-end;
+  width: 100%;
+
+  &.task {
+    margin-top: 1rem;
+  }
 }
 
 .button {
   background-color: $rose-color;
-  // border: 1px solid red;
   border: 0;
   border-radius: $border-radius;
   display: flex;
+  font-weight: bold;
   gap: 1rem;
   padding: 0.5rem 1.3rem;
-  font-weight: bold;
 
   &.add {
+    background-color: $peach-color;
     padding: 1rem;
     width: 244px;
-    background-color: $peach-color;
   }
 
   &.save {
@@ -164,28 +183,7 @@ img {
   width: 14px;
 }
 
-.column-title::placeholder {
-  font-size: 12px;
-  font-weight: 100;
-}
-
-.column-title {
-  border: 2px solid $black-color;
-  border-radius: $border-radius;
-  font-size: 18px;
-  letter-spacing: 0.4px;
-  margin-bottom: 1rem;
-  outline: 0;
-}
-
-.header {
-  .title {
-    font-size: 18px;
-    font-weight: 400;
-  }
-}
-
-.column-container:hover .edit-button {
+.item:hover .edit-button {
   visibility: visible;
 }
 
@@ -193,9 +191,6 @@ img {
   display: flex;
   gap: 0.5rem;
   width: 100%;
-}
-.task-container:hover .edit-button.tasks {
-  visibility: visible;
 }
 
 .title-container.input {
@@ -207,7 +202,6 @@ img {
 .edit-button {
   background-color: $white-color;
   border: 0;
-  outline: 0;
   visibility: hidden;
 
   &.accent {
@@ -215,11 +209,15 @@ img {
     margin-left: 1rem;
   }
 
+  &.tasks {
+    display: inline;
+  }
+
   &.save {
-    margin-left: 0.5rem;
+    margin-left: 0.6rem;
   }
 
   img {
-    width: 0.8rem;
+    width: 0.6rem;
   }
 }

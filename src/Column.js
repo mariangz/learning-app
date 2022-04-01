@@ -28,7 +28,7 @@ export default function Column({
   return (
     <div className='column'>
       {editVisible ? (
-        <form className='form' onSubmit={handleFormSubmit}>
+        <form className='form column' onSubmit={handleFormSubmit}>
           <input
             type='text'
             className='input'
@@ -36,16 +36,18 @@ export default function Column({
             onChange={(e) => setNewTitle(e.target.value)}
             maxLength='10'
           />
-          <button
-            type='button'
-            className='edit-button accent'
-            onClick={() => setEditVisible(!editVisible)}
-          >
-            <img src={cancel} alt='' />
-          </button>
-          <button className='edit-button accent' type='submit'>
-            <img src={save} alt='' />
-          </button>
+          <div className='button-container'>
+            <button
+              type='button'
+              className='edit-button accent'
+              onClick={() => setEditVisible(!editVisible)}
+            >
+              <img src={cancel} alt='' />
+            </button>
+            <button className='edit-button accent' type='submit'>
+              <img src={save} alt='' />
+            </button>
+          </div>
         </form>
       ) : (
         <div className='header'>
